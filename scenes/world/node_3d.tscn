@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://cjgrg3l7f60lf"]
+
+[ext_resource type="Script" uid="uid://4l2tw7700a7o" path="res://script/player.gd" id="1_lnto1"]
+[ext_resource type="PackedScene" uid="uid://bux64un21k338" path="res://scenes/npc/enemy.tscn" id="2_gl1gs"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4xowi"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a202f"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a202f"]
+height = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_r3fl7"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r3fl7"]
+radius = 0.225
+height = 1.56
+
+[sub_resource type="BoxMesh" id="BoxMesh_jka67"]
+size = Vector3(0.285, 0.92, 0.075)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i5arm"]
+size = Vector3(0.14, 0.33, 0.075)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0tk4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4xowi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
+ground_bottom_color = Color(0.15379122, 0.15926042, 0.2863424, 1)
+
+[sub_resource type="Sky" id="Sky_a202f"]
+sky_material = SubResource("ProceduralSkyMaterial_4xowi")
+
+[sub_resource type="Environment" id="Environment_noarx"]
+background_mode = 2
+sky = SubResource("Sky_a202f")
+
+[node name="Teste" type="Node3D" unique_id=519068162]
+
+[node name="floor" type="MeshInstance3D" parent="." unique_id=162806187]
+transform = Transform3D(17.185, 0, 0, 0, 17.185, 0, 0, 0, 17.185, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4xowi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor" unique_id=1511710589]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D" unique_id=735214634]
+shape = SubResource("ConcavePolygonShape3D_a202f")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=2098654301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_lnto1")
+sensi = 0.2
+
+[node name="Model" type="Node3D" parent="Player" unique_id=225654697]
+
+[node name="Base" type="MeshInstance3D" parent="Player/Model" unique_id=611671212]
+mesh = SubResource("CapsuleMesh_a202f")
+
+[node name="perna" type="Node3D" parent="Player/Model" unique_id=1158542787]
+transform = Transform3D(1, 0, 0, 0, 0.70710653, 0.70710653, 0, -0.70710653, 0.70710653, 0.5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Model/perna" unique_id=2146066459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80156046, 0)
+mesh = SubResource("SphereMesh_r3fl7")
+
+[node name="perna2" type="Node3D" parent="Player/Model" unique_id=816079360]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -0.5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Model/perna2" unique_id=1702326756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80156046, 0)
+mesh = SubResource("SphereMesh_r3fl7")
+
+[node name="Sword" type="Node3D" parent="Player/Model" unique_id=1618207577]
+transform = Transform3D(-5.110566e-08, -5.8484426e-09, -0.9999996, -0.6203542, 0.7843217, 2.7116533e-08, 0.78432184, 0.6203541, -4.371137e-08, 0.5641079, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Model/Sword" unique_id=621724644]
+transform = Transform3D(-1.5298985e-08, -0.35, 0, 0.35, -1.5298985e-08, 0, 0, 0, 0.35, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_r3fl7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/Model/Sword" unique_id=1954205473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53281176, 0)
+mesh = SubResource("BoxMesh_jka67")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Player/Model/Sword" unique_id=588706756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53281176, 0)
+mesh = SubResource("BoxMesh_jka67")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Player/Model/Sword" unique_id=608694540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20307314, 0)
+mesh = SubResource("BoxMesh_i5arm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1616345734]
+shape = SubResource("CapsuleShape3D_a0tk4")
+
+[node name="Spring" type="SpringArm3D" parent="Player" unique_id=1716311739]
+shape = SubResource("SphereShape3D_4xowi")
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Player/Spring" unique_id=1028860132]
+
+[node name="W" type="Node" parent="." unique_id=156657924]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="W" unique_id=1855366948]
+transform = Transform3D(0.8660254, 0.4829629, -0.1294095, 0, 0.258819, 0.9659259, 0.49999997, -0.8365163, 0.22414385, 0, 2.9251142, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="W" unique_id=632312367]
+environment = SubResource("Environment_noarx")
+
+[node name="Enemy" parent="." unique_id=881178478 instance=ExtResource("2_gl1gs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.021158, 1, 0)

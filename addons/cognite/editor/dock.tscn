@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://bukcku74rrx3f"]
+
+[ext_resource type="Script" uid="uid://cujf7aubet3b4" path="res://addons/cognite/editor/scripts/dock.gd" id="1_5rkij"]
+[ext_resource type="Texture2D" uid="uid://dgsq8vhvavv6k" path="res://addons/cognite/assets/artwork_godot.jpg" id="1_bxm0b"]
+[ext_resource type="StyleBox" uid="uid://bknqdg1p6w030" path="res://addons/cognite/assets/background.stylebox" id="2_5rkij"]
+[ext_resource type="Script" uid="uid://ctwg6x7u74op6" path="res://addons/cognite/editor/scripts/assemble_list.gd" id="3_uv2al"]
+[ext_resource type="StyleBox" uid="uid://45k1jrxg4nlw" path="res://addons/cognite/assets/light_background.stylebox" id="3_vfe4i"]
+[ext_resource type="Script" uid="uid://cfueccykdy42w" path="res://addons/cognite/editor/scripts/percepition_list.gd" id="5_bxm0b"]
+[ext_resource type="Script" uid="uid://bga2ukub1e0ix" path="res://addons/cognite/editor/scripts/context_list.gd" id="6_bxm0b"]
+[ext_resource type="Script" uid="uid://bmwvndvj3wy0e" path="res://addons/cognite/editor/scripts/decision_list.gd" id="7_bxm0b"]
+[ext_resource type="Script" uid="uid://bcvf288alwh81" path="res://addons/cognite/editor/scripts/action_list.gd" id="9_maeht"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_maeht"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_bxm0b")
+modulate_color = Color(0.155, 0.19633329, 0.31, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j26lr"]
+font_size = 13
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uv2al"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2m7hh"]
+
+[node name="Cognite" type="PanelContainer" unique_id=1034298330]
+custom_minimum_size = Vector2(0, 20)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_maeht")
+script = ExtResource("1_5rkij")
+
+[node name="dock" type="HBoxContainer" parent="." unique_id=1311423328]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="assemble_list" type="PanelContainer" parent="dock" unique_id=580344718]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_5rkij")
+script = ExtResource("3_uv2al")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/assemble_list" unique_id=1093418510]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="dock/assemble_list/VBoxContainer" unique_id=401109703]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_vfe4i")
+text = "assemblies"
+label_settings = SubResource("LabelSettings_j26lr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="dock/assemble_list/VBoxContainer" unique_id=1169631174]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("3_vfe4i")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="dock/assemble_list/VBoxContainer/PanelContainer" unique_id=73901234]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/assemble_list/VBoxContainer/PanelContainer/ScrollContainer" unique_id=2099627299]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="percepition_list" type="PanelContainer" parent="dock" unique_id=768736678]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uv2al")
+script = ExtResource("5_bxm0b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/percepition_list" unique_id=1892971880]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="dock/percepition_list/VBoxContainer" unique_id=1389928012]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_5rkij")
+text = "Perceptions"
+label_settings = SubResource("LabelSettings_j26lr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="dock/percepition_list/VBoxContainer" unique_id=1851787375]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_5rkij")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="dock/percepition_list/VBoxContainer/PanelContainer" unique_id=1716108611]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/percepition_list/VBoxContainer/PanelContainer/ScrollContainer" unique_id=1266341800]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="create_perception_item" type="Button" parent="dock/percepition_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1287204054]
+layout_mode = 2
+disabled = true
+text = "create new Perception"
+
+[node name="context_list" type="PanelContainer" parent="dock" unique_id=2092539506]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("2_5rkij")
+script = ExtResource("6_bxm0b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/context_list" unique_id=96076859]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="dock/context_list/VBoxContainer" unique_id=656939731]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_vfe4i")
+text = "Contexts"
+label_settings = SubResource("LabelSettings_j26lr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="dock/context_list/VBoxContainer" unique_id=558508076]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("3_vfe4i")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="dock/context_list/VBoxContainer/PanelContainer" unique_id=383417473]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/context_list/VBoxContainer/PanelContainer/ScrollContainer" unique_id=234204667]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="create_perception_item" type="Button" parent="dock/context_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1716522382]
+layout_mode = 2
+disabled = true
+text = "create new Context"
+
+[node name="decision_list" type="PanelContainer" parent="dock" unique_id=1646578988]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2m7hh")
+script = ExtResource("7_bxm0b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/decision_list" unique_id=1551685206]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="dock/decision_list/VBoxContainer" unique_id=1696357405]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_5rkij")
+text = "Decisions"
+label_settings = SubResource("LabelSettings_j26lr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="dock/decision_list/VBoxContainer" unique_id=1897960827]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_5rkij")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="dock/decision_list/VBoxContainer/PanelContainer" unique_id=1051886855]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/decision_list/VBoxContainer/PanelContainer/ScrollContainer" unique_id=835935873]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="create_decision_item" type="Button" parent="dock/decision_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1724366099]
+layout_mode = 2
+disabled = true
+text = "create new Decision"
+
+[node name="action_list" type="PanelContainer" parent="dock" unique_id=795719384]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("2_5rkij")
+script = ExtResource("9_maeht")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/action_list" unique_id=1873565782]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="dock/action_list/VBoxContainer" unique_id=1883745870]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_vfe4i")
+text = "Actions"
+label_settings = SubResource("LabelSettings_j26lr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="dock/action_list/VBoxContainer" unique_id=8296654]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("3_vfe4i")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="dock/action_list/VBoxContainer/PanelContainer" unique_id=214538365]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="dock/action_list/VBoxContainer/PanelContainer/ScrollContainer" unique_id=1606175777]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="dock/action_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer" unique_id=455647741]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_5rkij")
+
+[node name="create_new_action" type="MenuButton" parent="dock/action_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PanelContainer" unique_id=657602066]
+layout_mode = 2
+text = "Create new Action"
+
+[connection signal="pressed" from="dock/percepition_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/create_perception_item" to="dock/percepition_list" method="_on_create_perception_item_pressed"]
+[connection signal="pressed" from="dock/context_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/create_perception_item" to="dock/context_list" method="_on_create_perception_item_pressed"]
+[connection signal="pressed" from="dock/decision_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/create_decision_item" to="dock/decision_list" method="_on_create_decision_item_pressed"]
+[connection signal="pressed" from="dock/action_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PanelContainer/create_new_action" to="dock/action_list" method="_on_create_new_action_pressed"]

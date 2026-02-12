@@ -1,0 +1,357 @@
+[gd_scene format=3 uid="uid://bux64un21k338"]
+
+[ext_resource type="Script" uid="uid://752w6obyey2e" path="res://script/enemy.gd" id="1_o1l8c"]
+[ext_resource type="Script" uid="uid://ca685uc113riu" path="res://addons/cognite/node/cognite_node.gd" id="2_y3xqi"]
+[ext_resource type="Resource" uid="uid://b81wumclk0brh" path="res://assets/cognite/enemy.tres" id="3_a2mso"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r3fl7"]
+
+[sub_resource type="Animation" id="Animation_wc5p8"]
+resource_name = "Atack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/perna2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/perna:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/Sword:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.52, 0.6, 0.6666667, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.17240362, -1.4265275, 0.6981316), Vector3(-1.0030234, -0.67612135, 0.49680096), Vector3(-1.0030235, -0.15814245, 0.4968009), Vector3(-1.0030236, -2.687561, 0.49680093), Vector3(-1.331363, -1.9583101, -2.1257567), Vector3(-1.1266377, -2.0441654, -2.9171245)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/Sword:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.52, 0.6, 0.6666667, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5641079, 0, 0), Vector3(0.564, 0.2, -0.279), Vector3(0.58, 0.1, -0.518), Vector3(0.71201706, 0, 0.56791466), Vector3(-0.701, -0.163, 0.537), Vector3(-0.853, -0.263, 0.074)]
+}
+
+[sub_resource type="Animation" id="Animation_r3fl7"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/Base:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.16541934, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/Sword:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5641079, 0, 0), Vector3(0.564, 0.23, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/Sword:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0.6981317), Vector3(0, -1.5707964, 1.0471976)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/perna:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Model/perna2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jka67"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/Base:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/Sword:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5641079, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/Sword:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.711654e-08, -1.5707964, -0.66919416)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/perna2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Model/perna:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.7853982, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i5arm"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/Base:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/perna2:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.49),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.7853982, 0, 0), Vector3(-0.7853982, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/perna:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.49),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.7853982, 0, 0), Vector3(0.7853981, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Model/Sword:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5641079, 0, 0), Vector3(0.5641079, 0.17638707, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Model/Sword:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0.6981316), Vector3(0, -1.5707964, 1.0210177)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jka67"]
+_data = {
+&"Atack": SubResource("Animation_wc5p8"),
+&"Idle": SubResource("Animation_r3fl7"),
+&"RESET": SubResource("Animation_jka67"),
+&"Walk": SubResource("Animation_i5arm")
+}
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a202f"]
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+albedo_color = Color(0.67393494, 1.4535487e-05, 0.47076333, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_r3fl7"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r3fl7"]
+radius = 0.225
+height = 1.56
+
+[sub_resource type="BoxMesh" id="BoxMesh_jka67"]
+size = Vector3(0.285, 0.92, 0.075)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i5arm"]
+size = Vector3(0.14, 0.33, 0.075)
+
+[sub_resource type="Curve3D" id="Curve3D_r3fl7"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.249, 0, 0.335, 0, 0, 0, 0, 0, 0, -0.677, 0, 4.007, 0, 0, 0, 0, 0, 0, -0.6, 0, 7.454, 0, 0, 0, 0, 0, 0, -0.662, 0, 10.827, 0, 0, 0, 0, 0, 0, 0.958, 0, 12.133, 0, 0, 0, 0, 0, 0, 3.233, 0, 12.476, 0, 0, 0, 0, 0, 0, 4.414, 0, 14.196, 0, 0, 0, 0, 0, 0, 3.098, 0, 15.55, 0, 0, 0, 0, 0, 0, 0.14, 0, 14.968, 0, 0, 0, 0, 0, 0, 1.135, 0, 13.033, 0, 0, 0, 0, 0, 0, 4.166, 0, 9.017, 0, 0, 0, 0, 0, 0, 3.134, 0, 3.917, 0, 0, 0, 0, 0, 0, 2.636, 0, -0.845, 0, 0, 0, 0, 0, 0, 3.462, 0, -5.823, 0, 0, 0, 0, 0, 0, 3.392, 0, -10.882, 0, 0, 0, 0, 0, 0, 2.273, 0, -12.87, 0, 0, 0, 0, 0, 0, 0.71, 0, -12.235, 0, 0, 0, 0, 0, 0, 0.109, 0, -9.421),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 18
+
+[node name="Enemy" type="CharacterBody3D" unique_id=881178478]
+script = ExtResource("1_o1l8c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=392375373]
+shape = SubResource("CapsuleShape3D_r3fl7")
+
+[node name="CogniteNode" type="Node" parent="." unique_id=103461931]
+script = ExtResource("2_y3xqi")
+cognite_assemble = ExtResource("3_a2mso")
+life = null
+distance = 0.0
+animation = ""
+metadata/_custom_type_script = "uid://ca685uc113riu"
+
+[node name="Anima" type="AnimationPlayer" parent="." unique_id=740141218]
+libraries/ = SubResource("AnimationLibrary_jka67")
+playback_default_blend_time = 0.2
+
+[node name="Model" type="Node3D" parent="." unique_id=350447939]
+
+[node name="Base" type="MeshInstance3D" parent="Model" unique_id=1807291168]
+mesh = SubResource("CapsuleMesh_a202f")
+surface_material_override/0 = SubResource("StandardMaterial3D_noarx")
+
+[node name="perna" type="Node3D" parent="Model" unique_id=533789490]
+transform = Transform3D(1, 0, 0, 0, 0.70710653, 0.70710653, 0, -0.70710653, 0.70710653, 0.5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/perna" unique_id=187244123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80156046, 0)
+mesh = SubResource("SphereMesh_r3fl7")
+
+[node name="perna2" type="Node3D" parent="Model" unique_id=796373069]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -0.5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/perna2" unique_id=102305680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80156046, 0)
+mesh = SubResource("SphereMesh_r3fl7")
+
+[node name="Sword" type="Node3D" parent="Model" unique_id=2141948652]
+transform = Transform3D(-5.110566e-08, -5.8484426e-09, -0.9999996, -0.6203542, 0.7843217, 2.7116533e-08, 0.78432184, 0.6203541, -4.371137e-08, 0.5641079, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Sword" unique_id=401100458]
+transform = Transform3D(-1.5298985e-08, -0.35, 0, 0.35, -1.5298985e-08, 0, 0, 0, 0.35, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_r3fl7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Sword" unique_id=1944087802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53281176, 0)
+mesh = SubResource("BoxMesh_jka67")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model/Sword" unique_id=2058845036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53281176, 0)
+mesh = SubResource("BoxMesh_jka67")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Model/Sword" unique_id=704229127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20307314, 0)
+mesh = SubResource("BoxMesh_i5arm")
+
+[node name="runtime_action" type="Label3D" parent="." unique_id=562211052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0764735, 0)
+pixel_size = 0.017
+billboard = 1
+text = "text"
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1117808888]
+curve = SubResource("Curve3D_r3fl7")
+
+[connection signal="finalized" from="CogniteNode" to="." method="_on_cognite_node_finalized"]
+[connection signal="request" from="CogniteNode" to="." method="_on_cognite_node_request"]
+[connection signal="started" from="CogniteNode" to="." method="_on_cognite_node_started"]

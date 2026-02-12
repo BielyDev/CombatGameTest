@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://cjgrg3l7f60lf"]
+
+[ext_resource type="Script" uid="uid://4l2tw7700a7o" path="res://player.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://752w6obyey2e" path="res://enemy.gd" id="2_noarx"]
+[ext_resource type="Script" uid="uid://ca685uc113riu" path="res://addons/cognite/node/cognite_node.gd" id="3_r3fl7"]
+[ext_resource type="Script" uid="uid://bmho1qa7r0yhk" path="res://addons/cognite/node/assemble.gd" id="4_jka67"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4xowi"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a202f"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_noarx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0tk4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4xowi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
+ground_bottom_color = Color(0.15379122, 0.15926042, 0.2863424, 1)
+
+[sub_resource type="Sky" id="Sky_a202f"]
+sky_material = SubResource("ProceduralSkyMaterial_4xowi")
+
+[sub_resource type="Environment" id="Environment_noarx"]
+background_mode = 2
+sky = SubResource("Sky_a202f")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a202f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+albedo_color = Color(0.67393494, 1.4535487e-05, 0.47076333, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r3fl7"]
+
+[sub_resource type="Resource" id="Resource_r3fl7"]
+script = ExtResource("4_jka67")
+metadata/_custom_type_script = "uid://bmho1qa7r0yhk"
+
+[node name="Node3D" type="Node3D" unique_id=519068162]
+
+[node name="floor" type="MeshInstance3D" parent="." unique_id=162806187]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4xowi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor" unique_id=1511710589]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D" unique_id=735214634]
+shape = SubResource("ConcavePolygonShape3D_a202f")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=2098654301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_a202f")
+sensi = 0.2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=611671212]
+mesh = SubResource("CapsuleMesh_noarx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1616345734]
+shape = SubResource("CapsuleShape3D_a0tk4")
+
+[node name="Spring" type="SpringArm3D" parent="Player" unique_id=1716311739]
+shape = SubResource("SphereShape3D_4xowi")
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Player/Spring" unique_id=1028860132]
+
+[node name="W" type="Node" parent="." unique_id=156657924]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="W" unique_id=1855366948]
+transform = Transform3D(0.8660254, 0.4829629, -0.1294095, 0, 0.258819, 0.9659259, 0.49999997, -0.8365163, 0.22414385, 0, 2.9251142, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="W" unique_id=632312367]
+environment = SubResource("Environment_noarx")
+
+[node name="Enemy" type="CharacterBody3D" parent="." unique_id=802457462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0)
+script = ExtResource("2_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy" unique_id=938139771]
+mesh = SubResource("CapsuleMesh_a202f")
+surface_material_override/0 = SubResource("StandardMaterial3D_noarx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy" unique_id=716297706]
+shape = SubResource("CapsuleShape3D_r3fl7")
+
+[node name="CogniteNode" type="Node" parent="Enemy" unique_id=1594535034]
+script = ExtResource("3_r3fl7")
+cognite_assemble = SubResource("Resource_r3fl7")
+metadata/_custom_type_script = "uid://ca685uc113riu"
+
+[connection signal="finalized" from="Enemy/CogniteNode" to="Enemy" method="_on_cognite_node_finalized"]

@@ -1,0 +1,116 @@
+[gd_resource type="Resource" script_class="CogniteAssemble" format=3 uid="uid://b81wumclk0brh"]
+
+[ext_resource type="Script" uid="uid://bmho1qa7r0yhk" path="res://addons/cognite/node/assemble.gd" id="1_yusib"]
+
+[resource]
+script = ExtResource("1_yusib")
+creation_count = 74
+perceptions = {
+0: ["life", 1],
+19: ["distance", 1],
+49: ["animation", 2]
+}
+contexts = {
+21: {
+"activated": true,
+"name": "player_zone_atack",
+"perception_ids": {
+19: {
+"bool": false,
+"max": 2.5,
+"min": 0.0,
+"text": ""
+}
+}
+},
+30: {
+"activated": true,
+"name": "player_zone_view",
+"perception_ids": {
+19: {
+"bool": false,
+"max": 8.0,
+"min": 2.5,
+"text": ""
+}
+}
+},
+50: {
+"activated": true,
+"name": "in_atack",
+"perception_ids": {
+49: {
+"bool": false,
+"max": 1,
+"min": 0,
+"text": "Atack"
+}
+}
+}
+}
+decisions = {
+4: {
+"activated": true,
+"base_score": 0,
+"context_ids": {
+21: 1
+},
+"name": "battle"
+},
+23: {
+"activated": true,
+"base_score": 0,
+"context_ids": {
+21: 0,
+30: 1,
+50: 0
+},
+"name": "chase"
+},
+27: {
+"activated": true,
+"base_score": 0,
+"context_ids": {
+30: 0,
+50: 0
+},
+"name": "idle"
+}
+}
+actions = {
+41: {
+"activated": true,
+"decision_id": 27,
+"deed_list": [44]
+},
+42: {
+"activated": true,
+"decision_id": 23,
+"deed_list": [42, 53]
+},
+51: {
+"activated": true,
+"decision_id": 4,
+"deed_list": [54]
+}
+}
+deeds = {
+44: {
+"name": "idle",
+"process_mode": 1
+},
+53: {
+"name": "walk",
+"process_mode": 1
+},
+54: {
+"name": "atack",
+"process_mode": 1
+}
+}
+perception_runtime_value = {
+"animation": "",
+"distance": 0.0,
+"life": null
+}
+metadata/_custom_type_script = "uid://bmho1qa7r0yhk"
