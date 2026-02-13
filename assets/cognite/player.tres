@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="CogniteAssemble" format=3 uid="uid://c8ie3smlmjs6r"]
+
+[ext_resource type="Script" uid="uid://bmho1qa7r0yhk" path="res://addons/cognite/node/assemble.gd" id="1_k5mhe"]
+
+[resource]
+script = ExtResource("1_k5mhe")
+creation_count = 10
+perceptions = {
+0: ["x", 1],
+1: ["y", 1],
+2: ["z", 1]
+}
+contexts = {
+3: {
+"activated": true,
+"name": "idle",
+"perception_ids": {
+0: {
+"bool": false,
+"max": 0.00999999999476,
+"min": -0.00999999999476,
+"text": ""
+},
+2: {
+"bool": false,
+"max": 0.00999999999476,
+"min": -0.00999999999476,
+"text": ""
+}
+}
+},
+9: {
+"activated": true,
+"name": "walk",
+"perception_ids": {
+0: {
+"bool": false,
+"max": 0.00999999999476,
+"min": -0.00999999999476,
+"text": ""
+},
+2: {
+"bool": false,
+"max": 0.00999999999476,
+"min": -0.00999999999476,
+"text": ""
+}
+}
+}
+}
+decisions = {
+4: {
+"activated": true,
+"base_score": 0,
+"context_ids": {
+3: 0,
+9: 1
+},
+"name": "moviment"
+}
+}
+actions = {
+7: {
+"activated": true,
+"decision_id": 4,
+"deed_list": [8]
+}
+}
+deeds = {
+6: {
+"name": "idle",
+"process_mode": 1
+},
+8: {
+"name": "idle",
+"process_mode": 1
+}
+}
+perception_runtime_value = {
+"x": null,
+"y": null,
+"z": null
+}
+metadata/_custom_type_script = "uid://bmho1qa7r0yhk"

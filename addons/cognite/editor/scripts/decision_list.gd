@@ -1,5 +1,5 @@
 @tool
-extends PanelContainer
+extends GraphNode
 
 const DECISION_ITEM = preload("res://addons/cognite/editor/decision_item.tscn")
 

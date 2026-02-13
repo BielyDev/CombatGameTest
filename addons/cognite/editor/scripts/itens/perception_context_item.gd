@@ -7,20 +7,22 @@ var context: Dictionary
 var perception_data: Dictionary
 var assemble: CogniteAssemble
 
-@onready var property_name: Label = $VBoxContainer/HBoxContainer/property_name
-@onready var proper: HBoxContainer = $VBoxContainer/proper
-@onready var boolean: CheckButton = $VBoxContainer/proper/boolean
-@onready var min: LineEdit = $VBoxContainer/proper/min
-@onready var max: LineEdit = $VBoxContainer/proper/max
-@onready var text: LineEdit = $VBoxContainer/proper/text
-@onready var perception_type: Label = $VBoxContainer/proper/property_name
+@onready var percepetion_folder: FoldableContainer = $percepetion_folder
+@onready var proper: HBoxContainer = $percepetion_folder/VBoxContainer/proper
+@onready var boolean: CheckButton = $percepetion_folder/VBoxContainer/proper/boolean
+#@onready var min: LineEdit = $VBoxContainer/proper/min
+@onready var min: SpinBox = $percepetion_folder/VBoxContainer/proper/min
+#@onready var max: LineEdit = $VBoxContainer/proper/max
+@onready var max: SpinBox = $percepetion_folder/VBoxContainer/proper/max
+@onready var text: LineEdit = $percepetion_folder/VBoxContainer/proper/text
+@onready var perception_type: Label = $percepetion_folder/VBoxContainer/proper/property_name
 
 
 func load_perception(perception_id: int, _perception_data: Dictionary, _context_id: int, _assemble: CogniteAssemble):
 	id = perception_id; perception_data = _perception_data; context_id = _context_id; assemble = _assemble
 	var perception: Array = assemble.get_perception(id)
 	context = assemble.get_context(context_id)
-	property_name.text = perception[0]
+	percepetion_folder.title = str(perception[0]).capitalize()
 	perception_data = context.perception_ids[id]
 	
 	match perception[1]:
@@ -29,8 +31,8 @@ func load_perception(perception_id: int, _perception_data: Dictionary, _context_
 			perception_type.text = "Boolean"
 			boolean.show()
 		1:
-			min.text = str(perception_data.min); min.show()
-			max.text = str(perception_data.max); max.show()
+			min.value = float(perception_data.min); min.show()
+			max.value = float(perception_data.max); max.show()
 			perception_type.text = "Numeric"
 		2:
 			text.text = str(perception_data.text)
@@ -54,20 +56,19 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	assemble.atualize_context(context_id, context)
 
 
-func _on_min_text_changed(new_text: String) -> void:
-	var caret_position = min.caret_column
-	var word := Cognite.filter_string(new_text, "[0-9.]")
-	min.set_text(word)
-	min.caret_column = caret_position
+func _on_min_value_changed(value: float) -> void:
+	#var caret_position = min.caret_column
+	var word := str(value)#Cognite.filter_string(new_text, "[0-9.]")
+	#min.set_text(word)
+	#min.caret_column = caret_position
 	perception_data.min = float(word)
 	assemble.atualize_context(context_id, context)
 
-
-func _on_max_text_changed(new_text: String) -> void:
-	var caret_position = max.caret_column
-	var word := Cognite.filter_string(new_text, "[0-9.]")
-	max.set_text(word)
-	max.caret_column = caret_position
+func _on_max_value_changed(value: float) -> void:
+	#var caret_position = max.caret_column
+	var word := str(value)#Cognite.filter_string(new_text, "[0-9.]")
+	#max.set_text(word)
+	#max.caret_column = caret_position
 	perception_data.max = float(word)
 	assemble.atualize_context(context_id, context)
 

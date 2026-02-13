@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjgrg3l7f60lf"]
 
-[ext_resource type="Script" uid="uid://4l2tw7700a7o" path="res://script/player.gd" id="1_lnto1"]
+[ext_resource type="PackedScene" uid="uid://dovn0xb8n3xev" path="res://scenes/npc/player.tscn" id="1_lnto1"]
 [ext_resource type="PackedScene" uid="uid://bux64un21k338" path="res://scenes/npc/enemy.tscn" id="2_gl1gs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4xowi"]
@@ -8,26 +8,13 @@
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a202f"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_a202f"]
-height = 1.5
-
-[sub_resource type="SphereMesh" id="SphereMesh_r3fl7"]
-radius = 0.25
-height = 0.5
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_r3fl7"]
-radius = 0.225
-height = 1.56
-
-[sub_resource type="BoxMesh" id="BoxMesh_jka67"]
-size = Vector3(0.285, 0.92, 0.075)
-
-[sub_resource type="BoxMesh" id="BoxMesh_i5arm"]
-size = Vector3(0.14, 0.33, 0.075)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0tk4"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_4xowi"]
+[sub_resource type="Curve3D" id="Curve3D_lnto1"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.249, 0, 0.335, 0, 0, 0, 0, 0, 0, -0.677, 0, 4.007, 0, 0, 0, 0, 0, 0, -0.6, 0, 7.454, 0, 0, 0, 0, 0, 0, -0.662, 0, 10.827, 0, 0, 0, 0, 0, 0, 0.958, 0, 12.133, 0, 0, 0, 0, 0, 0, 3.233, 0, 12.476, 0, 0, 0, 0, 0, 0, 4.414, 0, 14.196, 0, 0, 0, 0, 0, 0, 3.098, 0, 15.55, 0, 0, 0, 0, 0, 0, 0.14, 0, 14.968, 0, 0, 0, 0, 0, 0, 1.135, 0, 13.033, 0, 0, 0, 0, 0, 0, 4.166, 0, 9.017, 0, 0, 0, 0, 0, 0, 3.134, 0, 3.917, 0, 0, 0, 0, 0, 0, 2.636, 0, -0.845, 0, 0, 0, 0, 0, 0, 3.462, 0, -5.823, 0, 0, 0, 0, 0, 0, 3.392, 0, -10.882, 0, 0, 0, 0, 0, 0, 2.273, 0, -12.87, 0, 0, 0, 0, 0, 0, 0.71, 0, -12.235, 0, 0, 0, 0, 0, 0, 0.109, 0, -9.421),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 18
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 ground_bottom_color = Color(0.15379122, 0.15926042, 0.2863424, 1)
@@ -50,57 +37,15 @@ mesh = SubResource("PlaneMesh_4xowi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D" unique_id=735214634]
 shape = SubResource("ConcavePolygonShape3D_a202f")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=2098654301]
+[node name="Player" parent="." unique_id=293590328 instance=ExtResource("1_lnto1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_lnto1")
-sensi = 0.2
 
-[node name="Model" type="Node3D" parent="Player" unique_id=225654697]
+[node name="Enemy" parent="." unique_id=881178478 node_paths=PackedStringArray("path") instance=ExtResource("2_gl1gs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.021158, 1, 0)
+path = NodePath("Path3D")
 
-[node name="Base" type="MeshInstance3D" parent="Player/Model" unique_id=611671212]
-mesh = SubResource("CapsuleMesh_a202f")
-
-[node name="perna" type="Node3D" parent="Player/Model" unique_id=1158542787]
-transform = Transform3D(1, 0, 0, 0, 0.70710653, 0.70710653, 0, -0.70710653, 0.70710653, 0.5, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Model/perna" unique_id=2146066459]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80156046, 0)
-mesh = SubResource("SphereMesh_r3fl7")
-
-[node name="perna2" type="Node3D" parent="Player/Model" unique_id=816079360]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -0.5, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Model/perna2" unique_id=1702326756]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80156046, 0)
-mesh = SubResource("SphereMesh_r3fl7")
-
-[node name="Sword" type="Node3D" parent="Player/Model" unique_id=1618207577]
-transform = Transform3D(-5.110566e-08, -5.8484426e-09, -0.9999996, -0.6203542, 0.7843217, 2.7116533e-08, 0.78432184, 0.6203541, -4.371137e-08, 0.5641079, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Model/Sword" unique_id=621724644]
-transform = Transform3D(-1.5298985e-08, -0.35, 0, 0.35, -1.5298985e-08, 0, 0, 0, 0.35, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_r3fl7")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/Model/Sword" unique_id=1954205473]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53281176, 0)
-mesh = SubResource("BoxMesh_jka67")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Player/Model/Sword" unique_id=588706756]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53281176, 0)
-mesh = SubResource("BoxMesh_jka67")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Player/Model/Sword" unique_id=608694540]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20307314, 0)
-mesh = SubResource("BoxMesh_i5arm")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1616345734]
-shape = SubResource("CapsuleShape3D_a0tk4")
-
-[node name="Spring" type="SpringArm3D" parent="Player" unique_id=1716311739]
-shape = SubResource("SphereShape3D_4xowi")
-spring_length = 5.0
-
-[node name="Camera3D" type="Camera3D" parent="Player/Spring" unique_id=1028860132]
+[node name="Path3D" type="Path3D" parent="Enemy" unique_id=1786285182]
+curve = SubResource("Curve3D_lnto1")
 
 [node name="W" type="Node" parent="." unique_id=156657924]
 
@@ -110,6 +55,3 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="W" unique_id=632312367]
 environment = SubResource("Environment_noarx")
-
-[node name="Enemy" parent="." unique_id=881178478 instance=ExtResource("2_gl1gs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.021158, 1, 0)

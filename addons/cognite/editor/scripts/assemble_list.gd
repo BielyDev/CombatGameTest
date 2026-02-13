@@ -1,5 +1,5 @@
 @tool
-extends PanelContainer
+extends GraphNode
 
 const ASSEMBLE_LIST_BUTTON = preload("res://addons/cognite/editor/assemble_list_button.tscn")
 

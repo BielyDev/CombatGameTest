@@ -2,22 +2,85 @@
 
 [ext_resource type="Script" uid="uid://bv5awqpt3v145" path="res://addons/cognite/editor/scripts/itens/context_item.gd" id="1_u3i8g"]
 [ext_resource type="StyleBox" uid="uid://45k1jrxg4nlw" path="res://addons/cognite/assets/light_background.stylebox" id="2_3yy8p"]
+[ext_resource type="Texture2D" uid="uid://v4ltv3yeg71a" path="res://addons/cognite/assets/close.svg" id="3_6buxa"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uv2al"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6buxa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6buxa"]
 content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-bg_color = Color(0.133333, 0.141176, 0.152941, 1)
+bg_color = Color(0, 0, 0, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.24313726, 0.6745098, 0.88235295, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujset"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.099985994, 0.099985994, 0.099985994, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.24313726, 0.6745098, 0.88235295, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7i2f2"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.6)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.258824, 0.760784, 1, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+border_color = Color(0.14181498, 0.54234993, 0.7247363, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvm8y"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1148968, 0.11489681, 0.1148968, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32941177, 0.73333335, 0.9372549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4o0w"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.14901961, 0.16078432, 0.1764706, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.14181498, 0.54234993, 0.7247363, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3yy8p"]
 
@@ -35,51 +98,54 @@ corner_radius_bottom_left = 3
 [node name="context_item" type="PanelContainer" unique_id=1385769528]
 offset_right = 379.0
 offset_bottom = 117.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uv2al")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6buxa")
 script = ExtResource("1_u3i8g")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1695447681]
+[node name="context_folder" type="FoldableContainer" parent="." unique_id=1527841603]
+layout_mode = 2
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_6buxa")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxFlat_ujset")
+theme_override_styles/title_collapsed_panel = SubResource("StyleBoxFlat_7i2f2")
+theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBoxFlat_pvm8y")
+theme_override_styles/focus = SubResource("StyleBoxFlat_b4o0w")
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4o0w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="context_folder" unique_id=1695447681]
 layout_mode = 2
 
-[node name="header" type="HBoxContainer" parent="VBoxContainer" unique_id=698806118]
+[node name="header" type="HBoxContainer" parent="context_folder/VBoxContainer" unique_id=698806118]
 layout_mode = 2
 
-[node name="activated" type="CheckButton" parent="VBoxContainer/header" unique_id=2095745802]
+[node name="activated" type="CheckButton" parent="context_folder/VBoxContainer/header" unique_id=2095745802]
 layout_mode = 2
 button_pressed = true
 
-[node name="Label" type="Label" parent="VBoxContainer/header" unique_id=1843186358]
+[node name="Label" type="Label" parent="context_folder/VBoxContainer/header" unique_id=1843186358]
 layout_mode = 2
 text = "activated"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/header" unique_id=993422616]
+[node name="VSeparator" type="VSeparator" parent="context_folder/VBoxContainer/header" unique_id=993422616]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3yy8p")
 
-[node name="delete" type="Button" parent="VBoxContainer/header" unique_id=1473076047]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-focus_mode = 0
-text = "x"
-icon_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=780063510]
+[node name="HBoxContainer" type="HBoxContainer" parent="context_folder/VBoxContainer" unique_id=780063510]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1004876842]
+[node name="Label" type="Label" parent="context_folder/VBoxContainer/HBoxContainer" unique_id=1004876842]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Name:"
 vertical_alignment = 1
 
-[node name="context_name" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=333776998]
+[node name="context_name" type="LineEdit" parent="context_folder/VBoxContainer/HBoxContainer" unique_id=333776998]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Name:"
 
-[node name="show_perception_list" type="CheckButton" parent="VBoxContainer" unique_id=1259710970]
+[node name="show_perception_list" type="CheckButton" parent="context_folder/VBoxContainer" unique_id=1259710970]
+visible = false
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 focus_mode = 0
@@ -94,19 +160,19 @@ text = "Show Perpections"
 icon_alignment = 1
 expand_icon = true
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=985340057]
+[node name="PanelContainer" type="PanelContainer" parent="context_folder/VBoxContainer" unique_id=985340057]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3yy8p")
 
-[node name="perception_list" type="VBoxContainer" parent="VBoxContainer/PanelContainer" unique_id=559274045]
+[node name="perception_list" type="VBoxContainer" parent="context_folder/VBoxContainer/PanelContainer" unique_id=559274045]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainer/perception_list" unique_id=1608366240]
+[node name="PanelContainer" type="PanelContainer" parent="context_folder/VBoxContainer/PanelContainer/perception_list" unique_id=1608366240]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_3yy8p")
 
-[node name="create_perception_item" type="MenuButton" parent="VBoxContainer/PanelContainer/perception_list/PanelContainer" unique_id=1405057076]
+[node name="create_perception_item" type="MenuButton" parent="context_folder/VBoxContainer/PanelContainer/perception_list/PanelContainer" unique_id=1405057076]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Add Perception"
@@ -116,8 +182,20 @@ popup/item_0/id = 0
 popup/item_0/disabled = true
 popup/item_0/separator = true
 
-[connection signal="toggled" from="VBoxContainer/header/activated" to="." method="_on_activated_toggled"]
-[connection signal="pressed" from="VBoxContainer/header/delete" to="." method="_on_delete_pressed"]
-[connection signal="text_changed" from="VBoxContainer/HBoxContainer/context_name" to="." method="_on_context_name_text_changed"]
-[connection signal="toggled" from="VBoxContainer/show_perception_list" to="." method="_on_show_perception_list_toggled"]
-[connection signal="about_to_popup" from="VBoxContainer/PanelContainer/perception_list/PanelContainer/create_perception_item" to="." method="_on_create_perception_item_about_to_popup"]
+[node name="delete" type="Button" parent="." unique_id=1017345511]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.57254905)
+icon = ExtResource("3_6buxa")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="toggled" from="context_folder/VBoxContainer/header/activated" to="." method="_on_activated_toggled"]
+[connection signal="text_changed" from="context_folder/VBoxContainer/HBoxContainer/context_name" to="." method="_on_context_name_text_changed"]
+[connection signal="toggled" from="context_folder/VBoxContainer/show_perception_list" to="." method="_on_show_perception_list_toggled"]
+[connection signal="about_to_popup" from="context_folder/VBoxContainer/PanelContainer/perception_list/PanelContainer/create_perception_item" to="." method="_on_create_perception_item_about_to_popup"]
+[connection signal="pressed" from="delete" to="." method="_on_delete_pressed"]

@@ -1,5 +1,5 @@
 @tool
-extends PanelContainer
+extends GraphNode
 
 const ACTION_ITEM = preload("uid://5ryiecwquvgd")
 

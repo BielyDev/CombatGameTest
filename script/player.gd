@@ -2,12 +2,19 @@ extends CharacterBody3D
 
 var motion: Vector3
 
+@onready var cognite_node: CogniteNode = $CogniteNode
+@onready var spring: SpringArm3D = $Spring
+
 @export var sensi: float = 1.0
 @export var speed: float = 4.0
-@onready var spring: SpringArm3D = $Spring
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _process(delta: float) -> void:
+	cognite_node.x = motion.x
+	cognite_node.y = motion.y
+	cognite_node.z = motion.z
 
 func _physics_process(delta: float) -> void:
 	motion.x = 0
@@ -38,3 +45,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_anima_animation_finished(anim_name: StringName) -> void:
 	pass # Replace with function body.
+
+
+func _on_cognite_node_request(_deed_name: StringName) -> void:
+	print(_deed_name)

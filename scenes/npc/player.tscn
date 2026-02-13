@@ -1,14 +1,11 @@
-[gd_scene format=3 uid="uid://bux64un21k338"]
+[gd_scene format=3 uid="uid://dovn0xb8n3xev"]
 
-[ext_resource type="Script" uid="uid://752w6obyey2e" path="res://script/enemy.gd" id="1_o1l8c"]
-[ext_resource type="Script" uid="uid://ca685uc113riu" path="res://addons/cognite/node/cognite_node.gd" id="2_y3xqi"]
-[ext_resource type="Resource" uid="uid://b81wumclk0brh" path="res://assets/cognite/enemy.tres" id="3_a2mso"]
+[ext_resource type="Script" uid="uid://4l2tw7700a7o" path="res://script/player.gd" id="1_ym8xw"]
+[ext_resource type="Script" uid="uid://ca685uc113riu" path="res://addons/cognite/node/cognite_node.gd" id="2_ybxrv"]
+[ext_resource type="Resource" uid="uid://c8ie3smlmjs6r" path="res://assets/cognite/player.tres" id="3_ybxrv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_a202f"]
 height = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
-albedo_color = Color(0.67393494, 1.4535487e-05, 0.47076333, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_r3fl7"]
 radius = 0.25
@@ -24,7 +21,9 @@ size = Vector3(0.285, 0.92, 0.075)
 [sub_resource type="BoxMesh" id="BoxMesh_i5arm"]
 size = Vector3(0.14, 0.33, 0.075)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r3fl7"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0tk4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4xowi"]
 
 [sub_resource type="Animation" id="Animation_wc5p8"]
 resource_name = "Atack"
@@ -116,7 +115,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -1.5707964, 0.6981317), Vector3(0, -1.5707964, 1.0471976)]
+"values": [Vector3(0, -1.5707964, 0), Vector3(0, -1.5707964, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -270,7 +269,7 @@ tracks/4/keys = {
 "values": [Vector3(0, -1.5707964, 0.6981316), Vector3(0, -1.5707964, 1.0210177)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jka67"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lnto1"]
 _data = {
 &"Atack": SubResource("Animation_wc5p8"),
 &"Idle": SubResource("Animation_r3fl7"),
@@ -278,69 +277,67 @@ _data = {
 &"Walk": SubResource("Animation_i5arm")
 }
 
-[node name="Enemy" type="CharacterBody3D" unique_id=881178478]
-script = ExtResource("1_o1l8c")
+[node name="Player" type="CharacterBody3D" unique_id=293590328]
+script = ExtResource("1_ym8xw")
+sensi = 0.2
 
-[node name="Model" type="Node3D" parent="." unique_id=350447939]
+[node name="Model" type="Node3D" parent="." unique_id=2078686565]
 
-[node name="Base" type="MeshInstance3D" parent="Model" unique_id=1807291168]
+[node name="Base" type="MeshInstance3D" parent="Model" unique_id=1731163751]
 mesh = SubResource("CapsuleMesh_a202f")
-surface_material_override/0 = SubResource("StandardMaterial3D_noarx")
 
-[node name="perna" type="Node3D" parent="Model" unique_id=533789490]
+[node name="perna" type="Node3D" parent="Model" unique_id=829458123]
 transform = Transform3D(1, 0, 0, 0, 0.70710653, 0.70710653, 0, -0.70710653, 0.70710653, 0.5, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/perna" unique_id=187244123]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/perna" unique_id=453551086]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80156046, 0)
 mesh = SubResource("SphereMesh_r3fl7")
 
-[node name="perna2" type="Node3D" parent="Model" unique_id=796373069]
+[node name="perna2" type="Node3D" parent="Model" unique_id=95772901]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -0.5, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/perna2" unique_id=102305680]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/perna2" unique_id=1948367041]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80156046, 0)
 mesh = SubResource("SphereMesh_r3fl7")
 
-[node name="Sword" type="Node3D" parent="Model" unique_id=2141948652]
-transform = Transform3D(-5.110566e-08, -5.848446e-09, -0.9999996, -0.6203542, 0.7843217, 2.711653e-08, 0.78432184, 0.6203541, -4.371137e-08, 0.5641079, 0, 0)
+[node name="Sword" type="Node3D" parent="Model" unique_id=684515060]
+transform = Transform3D(-5.110566e-08, -5.8484466e-09, -0.9999996, -0.6203542, 0.7843218, 2.711653e-08, 0.78432184, 0.6203541, -4.371137e-08, 0.5641079, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Sword" unique_id=401100458]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Sword" unique_id=346174313]
 transform = Transform3D(-1.5298985e-08, -0.35, 0, 0.35, -1.5298985e-08, 0, 0, 0, 0.35, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_r3fl7")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Sword" unique_id=1944087802]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Sword" unique_id=1101740844]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53281176, 0)
 mesh = SubResource("BoxMesh_jka67")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model/Sword" unique_id=2058845036]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model/Sword" unique_id=582792047]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53281176, 0)
 mesh = SubResource("BoxMesh_jka67")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Model/Sword" unique_id=704229127]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Model/Sword" unique_id=194896044]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20307314, 0)
 mesh = SubResource("BoxMesh_i5arm")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=392375373]
-shape = SubResource("CapsuleShape3D_r3fl7")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=544098470]
+shape = SubResource("CapsuleShape3D_a0tk4")
 
-[node name="CogniteNode" type="Node" parent="." unique_id=103461931]
-script = ExtResource("2_y3xqi")
-cognite_assemble = ExtResource("3_a2mso")
-life = null
-distance = 0.0
-animation = ""
-metadata/_custom_type_script = "uid://ca685uc113riu"
+[node name="Spring" type="SpringArm3D" parent="." unique_id=1307741222]
+shape = SubResource("SphereShape3D_4xowi")
+spring_length = 5.0
 
-[node name="Anima" type="AnimationPlayer" parent="." unique_id=740141218]
-libraries/ = SubResource("AnimationLibrary_jka67")
+[node name="Camera3D" type="Camera3D" parent="Spring" unique_id=746517608]
+
+[node name="Anima" type="AnimationPlayer" parent="." unique_id=1728590575]
+libraries/ = SubResource("AnimationLibrary_lnto1")
 playback_default_blend_time = 0.2
 
-[node name="runtime_action" type="Label3D" parent="." unique_id=562211052]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0764735, 0)
-pixel_size = 0.017
-billboard = 1
-text = "text"
+[node name="CogniteNode" type="Node" parent="." unique_id=1312144879]
+script = ExtResource("2_ybxrv")
+cognite_assemble = ExtResource("3_ybxrv")
+x = null
+y = null
+z = null
+metadata/_custom_type_script = "uid://ca685uc113riu"
 
-[connection signal="finalized" from="CogniteNode" to="." method="_on_cognite_node_finalized"]
 [connection signal="request" from="CogniteNode" to="." method="_on_cognite_node_request"]
-[connection signal="started" from="CogniteNode" to="." method="_on_cognite_node_started"]

@@ -9,11 +9,12 @@ var perception_count: int
 var context_data: Dictionary
 var context_percetion_list: Array[Control]
 
-@onready var context_name: LineEdit = $VBoxContainer/HBoxContainer/context_name
-@onready var create_perception_item: MenuButton = $VBoxContainer/PanelContainer/perception_list/PanelContainer/create_perception_item
-@onready var perception_list: VBoxContainer = $VBoxContainer/PanelContainer/perception_list
-@onready var panel_perception_list: PanelContainer = $VBoxContainer/PanelContainer
-@onready var context_activated: CheckButton = $VBoxContainer/header/activated
+@onready var context_name: LineEdit = $context_folder/VBoxContainer/HBoxContainer/context_name
+@onready var create_perception_item: MenuButton = $context_folder/VBoxContainer/PanelContainer/perception_list/PanelContainer/create_perception_item
+@onready var perception_list: VBoxContainer = $context_folder/VBoxContainer/PanelContainer/perception_list
+@onready var panel_perception_list: PanelContainer = $context_folder/VBoxContainer/PanelContainer
+@onready var context_activated: CheckButton = $context_folder/VBoxContainer/header/activated
+@onready var context_folder: FoldableContainer = $context_folder
 
 
 func _ready() -> void:
@@ -23,6 +24,7 @@ func _ready() -> void:
 func load_context(_assemble: CogniteAssemble, _context_id: int, _context_data: Dictionary):
 	assemble = _assemble; context_id = _context_id; context_data = _context_data
 	
+	context_folder.title = context_data.name.capitalize()
 	context_name.text = context_data.name
 	context_activated.set_pressed_no_signal(context_data.activated)
 	
@@ -60,6 +62,8 @@ func _on_context_name_text_changed(new_text: String) -> void:
 	var word := Cognite.filter_string(new_text, "[A-Za-z_]")
 	context_name.set_text(word)
 	context_name.caret_column = caret_position
+	
+	context_folder.title = word.capitalize()
 	
 	context_data.name = word
 	assemble.atualize_context(context_id, context_data)

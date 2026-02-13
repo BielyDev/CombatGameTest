@@ -4,21 +4,22 @@
 
 [resource]
 script = ExtResource("1_yusib")
-creation_count = 74
+creation_count = 76
 perceptions = {
 0: ["life", 1],
 19: ["distance", 1],
-49: ["animation", 2]
+49: ["animation", 2],
+75: ["teste", 0]
 }
 contexts = {
 21: {
 "activated": true,
 "name": "player_zone_atack",
 "perception_ids": {
-19: {
+75: {
 "bool": false,
-"max": 2.5,
-"min": 0.0,
+"max": 1,
+"min": 0,
 "text": ""
 }
 }
@@ -29,8 +30,8 @@ contexts = {
 "perception_ids": {
 19: {
 "bool": false,
-"max": 8.0,
-"min": 2.5,
+"max": 1.0,
+"min": 0.0,
 "text": ""
 }
 }
@@ -81,7 +82,7 @@ actions = {
 41: {
 "activated": true,
 "decision_id": 27,
-"deed_list": [44]
+"deed_list": [41]
 },
 42: {
 "activated": true,

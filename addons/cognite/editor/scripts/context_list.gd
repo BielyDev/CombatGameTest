@@ -1,5 +1,5 @@
 @tool
-extends PanelContainer
+extends GraphNode
 
 const CONTEXT_ITEM = preload("res://addons/cognite/editor/context_item.tscn")
 

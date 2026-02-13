@@ -1,5 +1,5 @@
 @tool
-extends PanelContainer
+extends GraphNode
 
 const PERCEPTION_ITEM = preload("res://addons/cognite/editor/perception_item.tscn")
 
