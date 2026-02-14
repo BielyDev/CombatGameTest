@@ -4,7 +4,7 @@ class_name Cognite extends EditorPlugin
 
 var inspector: EditorInspectorPlugin
 static var editor_theme: Theme
-static var main_panel: Control
+var main_panel: Control
 
 
 func _enter_tree():

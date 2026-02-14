@@ -7,6 +7,10 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_a202f"]
 height = 1.5
 
+[sub_resource type="SphereMesh" id="SphereMesh_ybxrv"]
+radius = 0.1
+height = 0.2
+
 [sub_resource type="SphereMesh" id="SphereMesh_r3fl7"]
 radius = 0.25
 height = 0.5
@@ -21,60 +25,51 @@ size = Vector3(0.285, 0.92, 0.075)
 [sub_resource type="BoxMesh" id="BoxMesh_i5arm"]
 size = Vector3(0.14, 0.33, 0.075)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_o1l8c"]
+size = Vector3(2, 1, 2.7075195)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a0tk4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4xowi"]
 
 [sub_resource type="Animation" id="Animation_wc5p8"]
 resource_name = "Atack"
-length = 2.0
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Model/perna2:rotation")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Model/Sword:rotation")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Model/perna:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Model/Sword:rotation")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.52, 0.6, 0.6666667, 0.73333335),
+"times": PackedFloat32Array(0, 0.13333334, 0.2533333, 0.33333334, 0.4, 0.46666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.17240362, -1.4265275, 0.6981316), Vector3(-1.0030234, -0.67612135, 0.49680096), Vector3(-1.0030235, -0.15814245, 0.4968009), Vector3(-1.0030236, -2.687561, 0.49680093), Vector3(-1.331363, -1.9583101, -2.1257567), Vector3(-1.1266377, -2.0441654, -2.9171245)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Model/Sword:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.52, 0.6, 0.6666667, 0.73333335),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/Sword:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.2533333, 0.33333334, 0.4, 0.46666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.5641079, 0, 0), Vector3(0.564, 0.2, -0.279), Vector3(0.58, 0.1, -0.518), Vector3(0.71201706, 0, 0.56791466), Vector3(-0.701, -0.163, 0.537), Vector3(-0.853, -0.263, 0.074)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/Demage/demage:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333335, 0.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_r3fl7"]
@@ -183,26 +178,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Model/perna2:rotation")
+tracks/3/path = NodePath("Model/Demage/demage:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Model/perna:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.7853982, 0, 0)]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_i5arm"]
@@ -277,6 +260,12 @@ _data = {
 &"Walk": SubResource("Animation_i5arm")
 }
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ybxrv"]
+_data = {
+&"Atack": SubResource("Animation_wc5p8"),
+&"RESET": SubResource("Animation_jka67")
+}
+
 [node name="Player" type="CharacterBody3D" unique_id=293590328]
 script = ExtResource("1_ym8xw")
 sensi = 0.2
@@ -286,8 +275,19 @@ sensi = 0.2
 [node name="Base" type="MeshInstance3D" parent="Model" unique_id=1731163751]
 mesh = SubResource("CapsuleMesh_a202f")
 
+[node name="Eyes" type="Node3D" parent="Model/Base" unique_id=1260486945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22726011, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Base/Eyes" unique_id=903773559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.091, 0.415)
+mesh = SubResource("SphereMesh_ybxrv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Base/Eyes" unique_id=628729363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.091, 0.415)
+mesh = SubResource("SphereMesh_ybxrv")
+
 [node name="perna" type="Node3D" parent="Model" unique_id=829458123]
-transform = Transform3D(1, 0, 0, 0, 0.70710653, 0.70710653, 0, -0.70710653, 0.70710653, 0.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 0.5, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/perna" unique_id=453551086]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80156046, 0)
@@ -319,6 +319,16 @@ mesh = SubResource("BoxMesh_jka67")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20307314, 0)
 mesh = SubResource("BoxMesh_i5arm")
 
+[node name="Demage" type="Area3D" parent="Model" unique_id=638055518]
+collision_layer = 0
+collision_mask = 8
+
+[node name="demage" type="CollisionShape3D" parent="Model/Demage" unique_id=904965202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3537598)
+shape = SubResource("BoxShape3D_o1l8c")
+disabled = true
+debug_color = Color(0.99514896, 0, 0.21801919, 0.41960785)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=544098470]
 shape = SubResource("CapsuleShape3D_a0tk4")
 
@@ -332,12 +342,21 @@ spring_length = 5.0
 libraries/ = SubResource("AnimationLibrary_lnto1")
 playback_default_blend_time = 0.2
 
+[node name="Sword" type="AnimationPlayer" parent="." unique_id=502144470]
+libraries/ = SubResource("AnimationLibrary_ybxrv")
+playback_auto_capture_transition_type = 7
+speed_scale = 0.8
+
 [node name="CogniteNode" type="Node" parent="." unique_id=1312144879]
 script = ExtResource("2_ybxrv")
 cognite_assemble = ExtResource("3_ybxrv")
-x = null
 y = null
 z = null
+x = null
+request_atack = null
 metadata/_custom_type_script = "uid://ca685uc113riu"
 
-[connection signal="request" from="CogniteNode" to="." method="_on_cognite_node_request"]
+[connection signal="body_entered" from="Model/Demage" to="." method="_on_demage_body_entered"]
+[connection signal="animation_finished" from="Anima" to="." method="_on_anima_animation_finished"]
+[connection signal="animation_finished" from="Sword" to="." method="_on_anima_animation_finished"]
+[connection signal="started" from="CogniteNode" to="." method="_on_cognite_node_started"]

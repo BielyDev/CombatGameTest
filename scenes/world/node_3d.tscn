@@ -2,11 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dovn0xb8n3xev" path="res://scenes/npc/player.tscn" id="1_lnto1"]
 [ext_resource type="PackedScene" uid="uid://bux64un21k338" path="res://scenes/npc/enemy.tscn" id="2_gl1gs"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_4xowi"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a202f"]
-data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+[ext_resource type="PackedScene" uid="uid://y73l82q3lq0x" path="res://scenes/world/teste.tscn" id="3_gl1gs"]
 
 [sub_resource type="Curve3D" id="Curve3D_lnto1"]
 closed = true
@@ -28,23 +24,22 @@ sky = SubResource("Sky_a202f")
 
 [node name="Teste" type="Node3D" unique_id=519068162]
 
-[node name="floor" type="MeshInstance3D" parent="." unique_id=162806187]
-transform = Transform3D(17.185, 0, 0, 0, 17.185, 0, 0, 0, 17.185, 0, 0, 0)
-mesh = SubResource("PlaneMesh_4xowi")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="floor" unique_id=1511710589]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D" unique_id=735214634]
-shape = SubResource("ConcavePolygonShape3D_a202f")
-
 [node name="Player" parent="." unique_id=293590328 instance=ExtResource("1_lnto1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 129
 
 [node name="Enemy" parent="." unique_id=881178478 node_paths=PackedStringArray("path") instance=ExtResource("2_gl1gs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.021158, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.021158, 1, 7)
 path = NodePath("Path3D")
 
 [node name="Path3D" type="Path3D" parent="Enemy" unique_id=1786285182]
+curve = SubResource("Curve3D_lnto1")
+
+[node name="Enemy2" parent="." unique_id=476718719 node_paths=PackedStringArray("path") instance=ExtResource("2_gl1gs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.772768, 1, -11.204287)
+path = NodePath("Path3D")
+
+[node name="Path3D" type="Path3D" parent="Enemy2" unique_id=69721317]
 curve = SubResource("Curve3D_lnto1")
 
 [node name="W" type="Node" parent="." unique_id=156657924]
@@ -55,3 +50,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="W" unique_id=632312367]
 environment = SubResource("Environment_noarx")
+
+[node name="teste" parent="." unique_id=278672872 instance=ExtResource("3_gl1gs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.03411174, -1)

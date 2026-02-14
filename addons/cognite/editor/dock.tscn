@@ -38,58 +38,31 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_maeht")
 grid_pattern = 1
 snapping_enabled = false
-connections = Array[Dictionary]([{
-"from_node": &"assemble_list",
-"from_port": 0,
-"keep_alive": true,
-"to_node": &"percepition_list",
-"to_port": 0
-}, {
-"from_node": &"percepition_list",
-"from_port": 0,
-"keep_alive": true,
-"to_node": &"context_list",
-"to_port": 0
-}, {
-"from_node": &"context_list",
-"from_port": 0,
-"keep_alive": true,
-"to_node": &"decision_list",
-"to_port": 0
-}, {
-"from_node": &"decision_list",
-"from_port": 0,
-"keep_alive": true,
-"to_node": &"action_list",
-"to_port": 0
-}])
-zoom = 0.8
-zoom_min = 0.2
+zoom_min = 0.6
 zoom_max = 1.6
-zoom_step = 0.3
-minimap_size = Vector2(192.04004, 161.20001)
-minimap_opacity = 0.325
+zoom_step = 1.05
+minimap_size = Vector2(100, 100)
+minimap_opacity = 0.4
 show_menu = false
 show_zoom_buttons = false
 show_grid_buttons = false
 
 [node name="assemble_list" type="GraphNode" parent="graph_edit" unique_id=756490989]
 layout_mode = 0
-offset_left = -40.8
-offset_top = 81.6
-offset_right = 177.19983
-offset_bottom = 548.59985
-scale = Vector2(0.8, 0.8)
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 410.0
 size_flags_vertical = 3
 mouse_filter = 1
-position_offset = Vector2(-51, 102)
+position_offset = Vector2(10, 10)
 resizable = true
 title = "Assemblies"
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)
 slot/0/left_icon = null
-slot/0/right_enabled = true
+slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color(0.14901961, 0.16078432, 0.1764706, 1)
 slot/0/right_icon = null
@@ -127,21 +100,20 @@ size_flags_vertical = 3
 
 [node name="percepition_list" type="GraphNode" parent="graph_edit" unique_id=190849915]
 layout_mode = 0
-offset_left = 169.59987
-offset_top = 41.600002
-offset_right = 440.5996
-offset_bottom = 566.6
-scale = Vector2(0.8, 0.8)
+offset_left = 10.0
+offset_top = 430.0
+offset_right = 310.0
+offset_bottom = 1010.0
 size_flags_vertical = 3
 mouse_filter = 1
-position_offset = Vector2(211.99983, 52)
+position_offset = Vector2(10, 430)
 resizable = true
 title = "Perceptions"
-slot/0/left_enabled = true
+slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(0.47058824, 0.72156864, 0.5019608, 1)
 slot/0/left_icon = null
-slot/0/right_enabled = true
+slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color(0.47058824, 0.72156864, 0.5019608, 1)
 slot/0/right_icon = null
@@ -166,41 +138,46 @@ vertical_alignment = 1
 [node name="PanelContainer" type="PanelContainer" parent="graph_edit/percepition_list/VBoxContainer" unique_id=1851787375]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = ExtResource("2_5rkij")
+theme_override_styles/panel = ExtResource("3_vfe4i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="graph_edit/percepition_list/VBoxContainer/PanelContainer" unique_id=1716108611]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="graph_edit/percepition_list/VBoxContainer/PanelContainer/ScrollContainer" unique_id=1266341800]
+[node name="VBoxContainer" type="VBoxContainer" parent="graph_edit/percepition_list/VBoxContainer/PanelContainer" unique_id=1266341800]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 4
 
-[node name="create_perception_item" type="Button" parent="graph_edit/percepition_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1287204054]
+[node name="ScrollContainer" type="ScrollContainer" parent="graph_edit/percepition_list/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1716108611]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="perceptions_list" type="VBoxContainer" parent="graph_edit/percepition_list/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer" unique_id=540312608]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="create_perception_item" type="Button" parent="graph_edit/percepition_list/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1287204054]
 layout_mode = 2
 disabled = true
 text = "create new Perception"
 
 [node name="context_list" type="GraphNode" parent="graph_edit" unique_id=1952871780]
 layout_mode = 0
-offset_left = 422.39966
-offset_top = 19.2
-offset_right = 682.3998
-offset_bottom = 601.2
-scale = Vector2(0.8, 0.8)
+offset_left = 330.0
+offset_top = 10.0
+offset_right = 730.0
+offset_bottom = 1010.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
-position_offset = Vector2(527.9996, 24)
+position_offset = Vector2(330, 10)
 resizable = true
 title = "Contexts"
-slot/0/left_enabled = true
+slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(0.24313726, 0.6745098, 0.88235295, 1)
 slot/0/left_icon = null
-slot/0/right_enabled = true
+slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color(0.24313726, 0.6745098, 0.88235295, 1)
 slot/0/right_icon = null
@@ -227,38 +204,43 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("3_vfe4i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="graph_edit/context_list/VBoxContainer/PanelContainer" unique_id=383417473]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="graph_edit/context_list/VBoxContainer/PanelContainer/ScrollContainer" unique_id=234204667]
+[node name="VBoxContainer" type="VBoxContainer" parent="graph_edit/context_list/VBoxContainer/PanelContainer" unique_id=234204667]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="create_perception_item" type="Button" parent="graph_edit/context_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1716522382]
+[node name="ScrollContainer" type="ScrollContainer" parent="graph_edit/context_list/VBoxContainer/PanelContainer/VBoxContainer" unique_id=383417473]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="node_list" type="VBoxContainer" parent="graph_edit/context_list/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer" unique_id=1782155555]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="create_perception_item" type="Button" parent="graph_edit/context_list/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1716522382]
 layout_mode = 2
 disabled = true
 text = "create new Context"
 
 [node name="decision_list" type="GraphNode" parent="graph_edit" unique_id=944929723]
 layout_mode = 0
-offset_left = 666.3998
-offset_top = 24.800001
-offset_right = 938.3998
-offset_bottom = 609.8
-scale = Vector2(0.8, 0.8)
+offset_left = 750.0
+offset_top = 10.0
+offset_right = 1150.0
+offset_bottom = 1010.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
-position_offset = Vector2(832.9997, 31)
+position_offset = Vector2(750, 10)
 resizable = true
 title = "Decisions"
-slot/0/left_enabled = true
+slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)
 slot/0/left_icon = null
-slot/0/right_enabled = true
+slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
@@ -283,37 +265,42 @@ vertical_alignment = 1
 [node name="PanelContainer" type="PanelContainer" parent="graph_edit/decision_list/VBoxContainer" unique_id=1897960827]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = ExtResource("2_5rkij")
+theme_override_styles/panel = ExtResource("3_vfe4i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="graph_edit/decision_list/VBoxContainer/PanelContainer" unique_id=1051886855]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="graph_edit/decision_list/VBoxContainer/PanelContainer/ScrollContainer" unique_id=835935873]
+[node name="VBoxContainer" type="VBoxContainer" parent="graph_edit/decision_list/VBoxContainer/PanelContainer" unique_id=835935873]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 4
 
-[node name="create_decision_item" type="Button" parent="graph_edit/decision_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1724366099]
+[node name="ScrollContainer" type="ScrollContainer" parent="graph_edit/decision_list/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1051886855]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="context_list" type="VBoxContainer" parent="graph_edit/decision_list/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer" unique_id=1797518154]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="create_decision_item" type="Button" parent="graph_edit/decision_list/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1724366099]
 layout_mode = 2
 disabled = true
 text = "create new Decision"
 
 [node name="action_list" type="GraphNode" parent="graph_edit" unique_id=1452437008]
 layout_mode = 0
-offset_left = 919.9997
-offset_top = 68.0
-offset_right = 1229.9998
-offset_bottom = 579.99976
-scale = Vector2(0.8, 0.8)
+offset_left = 1170.0
+offset_top = 10.0
+offset_right = 1570.0
+offset_bottom = 1010.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
-position_offset = Vector2(1149.9996, 85)
+position_offset = Vector2(1170, 10)
 resizable = true
 title = "Actions"
-slot/0/left_enabled = true
+slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(0.9882353, 0.49803922, 0.49803922, 1)
 slot/0/left_icon = null
@@ -344,24 +331,52 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("3_vfe4i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="graph_edit/action_list/VBoxContainer/PanelContainer" unique_id=214538365]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="graph_edit/action_list/VBoxContainer/PanelContainer/ScrollContainer" unique_id=1606175777]
+[node name="VBoxContainer" type="VBoxContainer" parent="graph_edit/action_list/VBoxContainer/PanelContainer" unique_id=1606175777]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="graph_edit/action_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer" unique_id=455647741]
+[node name="ScrollContainer" type="ScrollContainer" parent="graph_edit/action_list/VBoxContainer/PanelContainer/VBoxContainer" unique_id=214538365]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="action_list" type="VBoxContainer" parent="graph_edit/action_list/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer" unique_id=1997080203]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="graph_edit/action_list/VBoxContainer/PanelContainer/VBoxContainer" unique_id=455647741]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_5rkij")
 
-[node name="create_new_action" type="MenuButton" parent="graph_edit/action_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PanelContainer" unique_id=657602066]
+[node name="create_new_action" type="MenuButton" parent="graph_edit/action_list/VBoxContainer/PanelContainer/VBoxContainer/PanelContainer" unique_id=657602066]
 layout_mode = 2
 text = "Create new Action"
 
-[connection signal="pressed" from="graph_edit/percepition_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/create_perception_item" to="graph_edit/percepition_list" method="_on_create_perception_item_pressed"]
-[connection signal="pressed" from="graph_edit/context_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/create_perception_item" to="graph_edit/context_list" method="_on_create_perception_item_pressed"]
-[connection signal="pressed" from="graph_edit/decision_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/create_decision_item" to="graph_edit/decision_list" method="_on_create_decision_item_pressed"]
-[connection signal="pressed" from="graph_edit/action_list/VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PanelContainer/create_new_action" to="graph_edit/action_list" method="_on_create_new_action_pressed"]
+[node name="correction" type="CheckButton" parent="." unique_id=1951887711]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Correction"
+
+[connection signal="position_offset_changed" from="graph_edit/assemble_list" to="." method="_on_list_position_offset_changed"]
+[connection signal="resize_end" from="graph_edit/assemble_list" to="." method="_on_list_resize_end"]
+[connection signal="resize_request" from="graph_edit/assemble_list" to="." method="_on_list_resize_request"]
+[connection signal="position_offset_changed" from="graph_edit/percepition_list" to="." method="_on_list_position_offset_changed"]
+[connection signal="resize_end" from="graph_edit/percepition_list" to="." method="_on_list_resize_end"]
+[connection signal="resize_request" from="graph_edit/percepition_list" to="." method="_on_list_resize_request"]
+[connection signal="pressed" from="graph_edit/percepition_list/VBoxContainer/PanelContainer/VBoxContainer/create_perception_item" to="graph_edit/percepition_list" method="_on_create_perception_item_pressed"]
+[connection signal="position_offset_changed" from="graph_edit/context_list" to="." method="_on_list_position_offset_changed"]
+[connection signal="resize_end" from="graph_edit/context_list" to="." method="_on_list_resize_end"]
+[connection signal="resize_request" from="graph_edit/context_list" to="." method="_on_list_resize_request"]
+[connection signal="pressed" from="graph_edit/context_list/VBoxContainer/PanelContainer/VBoxContainer/create_perception_item" to="graph_edit/context_list" method="_on_create_perception_item_pressed"]
+[connection signal="position_offset_changed" from="graph_edit/decision_list" to="." method="_on_list_position_offset_changed"]
+[connection signal="resize_end" from="graph_edit/decision_list" to="." method="_on_list_resize_end"]
+[connection signal="resize_request" from="graph_edit/decision_list" to="." method="_on_list_resize_request"]
+[connection signal="pressed" from="graph_edit/decision_list/VBoxContainer/PanelContainer/VBoxContainer/create_decision_item" to="graph_edit/decision_list" method="_on_create_decision_item_pressed"]
+[connection signal="position_offset_changed" from="graph_edit/action_list" to="." method="_on_list_position_offset_changed"]
+[connection signal="resize_end" from="graph_edit/action_list" to="." method="_on_list_resize_end"]
+[connection signal="resize_request" from="graph_edit/action_list" to="." method="_on_list_resize_request"]
+[connection signal="pressed" from="graph_edit/action_list/VBoxContainer/PanelContainer/VBoxContainer/PanelContainer/create_new_action" to="graph_edit/action_list" method="_on_create_new_action_pressed"]
+[connection signal="pressed" from="correction" to="." method="_on_correction_pressed"]

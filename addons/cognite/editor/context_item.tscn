@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dgg6fxmx7asyf"]
 
 [ext_resource type="Script" uid="uid://bv5awqpt3v145" path="res://addons/cognite/editor/scripts/itens/context_item.gd" id="1_u3i8g"]
-[ext_resource type="StyleBox" uid="uid://45k1jrxg4nlw" path="res://addons/cognite/assets/light_background.stylebox" id="2_3yy8p"]
 [ext_resource type="Texture2D" uid="uid://v4ltv3yeg71a" path="res://addons/cognite/assets/close.svg" id="3_6buxa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6buxa"]
@@ -11,11 +10,7 @@ content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-bg_color = Color(0, 0, 0, 0.6)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_color = Color(0.24313726, 0.6745098, 0.88235295, 1)
+bg_color = Color(0.047058824, 0.09803922, 0.25882354, 0.44705883)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_detail = 5
@@ -25,11 +20,7 @@ content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-bg_color = Color(0.099985994, 0.099985994, 0.099985994, 0.6)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_color = Color(0.24313726, 0.6745098, 0.88235295, 1)
+bg_color = Color(0.11764706, 0.2, 0.46666667, 0.44705883)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_detail = 5
@@ -39,12 +30,7 @@ content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-bg_color = Color(0, 0, 0, 0.6)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.14181498, 0.54234993, 0.7247363, 1)
+bg_color = Color(0.047058824, 0.09803922, 0.25882354, 0.44705883)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -56,12 +42,7 @@ content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-bg_color = Color(0.1148968, 0.11489681, 0.1148968, 0.6)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.32941177, 0.73333335, 0.9372549, 1)
+bg_color = Color(0.11764706, 0.2, 0.46666667, 0.44705883)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -73,11 +54,7 @@ content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-bg_color = Color(0.14901961, 0.16078432, 0.1764706, 1)
-border_width_left = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.14181498, 0.54234993, 0.7247363, 1)
+bg_color = Color(0.047058824, 0.09803922, 0.25882354, 0.44705883)
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 corner_detail = 5
@@ -144,6 +121,24 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Name:"
 
+[node name="validate_hbox" type="HBoxContainer" parent="context_folder/VBoxContainer" unique_id=1859319743]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="context_folder/VBoxContainer/validate_hbox" unique_id=1111621541]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Validate mode:"
+
+[node name="validate_value" type="OptionButton" parent="context_folder/VBoxContainer/validate_hbox" unique_id=1099201242]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Any"
+popup/item_0/id = 0
+popup/item_1/text = "All"
+popup/item_1/id = 1
+
 [node name="show_perception_list" type="CheckButton" parent="context_folder/VBoxContainer" unique_id=1259710970]
 visible = false
 custom_minimum_size = Vector2(24, 24)
@@ -168,11 +163,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3yy8p")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="context_folder/VBoxContainer/PanelContainer/perception_list" unique_id=1608366240]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_3yy8p")
-
-[node name="create_perception_item" type="MenuButton" parent="context_folder/VBoxContainer/PanelContainer/perception_list/PanelContainer" unique_id=1405057076]
+[node name="create_perception_item" type="MenuButton" parent="context_folder/VBoxContainer/PanelContainer/perception_list" unique_id=1405057076]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Add Perception"
@@ -196,6 +187,7 @@ expand_icon = true
 
 [connection signal="toggled" from="context_folder/VBoxContainer/header/activated" to="." method="_on_activated_toggled"]
 [connection signal="text_changed" from="context_folder/VBoxContainer/HBoxContainer/context_name" to="." method="_on_context_name_text_changed"]
+[connection signal="item_selected" from="context_folder/VBoxContainer/validate_hbox/validate_value" to="." method="_on_validate_value_item_selected"]
 [connection signal="toggled" from="context_folder/VBoxContainer/show_perception_list" to="." method="_on_show_perception_list_toggled"]
-[connection signal="about_to_popup" from="context_folder/VBoxContainer/PanelContainer/perception_list/PanelContainer/create_perception_item" to="." method="_on_create_perception_item_about_to_popup"]
+[connection signal="about_to_popup" from="context_folder/VBoxContainer/PanelContainer/perception_list/create_perception_item" to="." method="_on_create_perception_item_about_to_popup"]
 [connection signal="pressed" from="delete" to="." method="_on_delete_pressed"]

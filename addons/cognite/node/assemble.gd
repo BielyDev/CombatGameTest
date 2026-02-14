@@ -4,7 +4,7 @@ class_name CogniteAssemble extends Resource
 signal actualized
 
 const PERCEPTION_CONTEXT_TEMPLATE := {"bool": false, "min": 0, "max": 1, "text": ""}
-const CONTEXT_TEMPLATE := {"name": "", "activated": true, "perception_ids": {}}
+const CONTEXT_TEMPLATE := {"name": "", "activated": true, "perception_ids": {},"validate_mode": 0}
 const DECISION_TEMPLATE := {"name": "", "activated": true, "base_score": 0, "context_ids": {}}
 const ACTION_TEMPLATE := {"activated": true, "decision_id": 0, "deed_list": []}
 const DEED_TEMPLATE := {"name": "", "process_mode": 1}

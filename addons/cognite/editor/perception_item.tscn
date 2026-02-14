@@ -4,27 +4,21 @@
 [ext_resource type="StyleBox" uid="uid://45k1jrxg4nlw" path="res://addons/cognite/assets/light_background.stylebox" id="2_0mx6j"]
 [ext_resource type="Texture2D" uid="uid://v4ltv3yeg71a" path="res://addons/cognite/assets/close.svg" id="3_knu8p"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mx6j"]
-content_margin_left = 6.0
-content_margin_top = 6.0
-content_margin_right = 6.0
-content_margin_bottom = 6.0
-bg_color = Color(0.14901961, 0.16078432, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3882353, 0.61960787, 0.41960785, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knu8p"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.22352941, 0.38431373, 0.24705882, 0.32156864)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_detail = 5
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1333979134]
 offset_top = 62.0
 offset_right = 354.0
 offset_bottom = 62.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0mx6j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_knu8p")
 script = ExtResource("1_ta6m6")
 
 [node name="perception_item" type="VBoxContainer" parent="." unique_id=1503019183]

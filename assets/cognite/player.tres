@@ -4,24 +4,28 @@
 
 [resource]
 script = ExtResource("1_k5mhe")
-creation_count = 10
+creation_count = 30
 perceptions = {
-0: ["x", 1],
 1: ["y", 1],
-2: ["z", 1]
+2: ["z", 1],
+19: ["x", 1],
+25: ["request_atack", 0]
 }
 contexts = {
 3: {
 "activated": true,
 "name": "idle",
 "perception_ids": {
+2: {
 0: {
 "bool": false,
 "max": 0.00999999999476,
 "min": -0.00999999999476,
 "text": ""
+}
 },
-2: {
+19: {
+0: {
 "bool": false,
 "max": 0.00999999999476,
 "min": -0.00999999999476,
@@ -29,23 +33,22 @@ contexts = {
 }
 }
 },
-9: {
+"validate_mode": 1
+},
+26: {
 "activated": true,
-"name": "walk",
+"name": "Atack",
 "perception_ids": {
+25: {
 0: {
-"bool": false,
-"max": 0.00999999999476,
-"min": -0.00999999999476,
+"bool": true,
+"max": 1,
+"min": 0,
 "text": ""
+}
+}
 },
-2: {
-"bool": false,
-"max": 0.00999999999476,
-"min": -0.00999999999476,
-"text": ""
-}
-}
+"validate_mode": 0
 }
 }
 decisions = {
@@ -53,17 +56,43 @@ decisions = {
 "activated": true,
 "base_score": 0,
 "context_ids": {
-3: 0,
-9: 1
+3: 1,
+26: -1
 },
-"name": "moviment"
+"name": "idle"
+},
+13: {
+"activated": true,
+"base_score": 1,
+"context_ids": {
+26: -1
+},
+"name": "walk"
+},
+27: {
+"activated": true,
+"base_score": 0,
+"context_ids": {
+26: 1
+},
+"name": "Atack"
 }
 }
 actions = {
-7: {
+11: {
 "activated": true,
 "decision_id": 4,
-"deed_list": [8]
+"deed_list": [12]
+},
+15: {
+"activated": true,
+"decision_id": 13,
+"deed_list": [16]
+},
+28: {
+"activated": true,
+"decision_id": 27,
+"deed_list": [29]
 }
 }
 deeds = {
@@ -74,9 +103,23 @@ deeds = {
 8: {
 "name": "idle",
 "process_mode": 1
+},
+12: {
+"name": "idle",
+"process_mode": 1
+},
+16: {
+"name": "walk",
+"process_mode": 1
+},
+29: {
+"name": "atack",
+"process_mode": 2
 }
 }
 perception_runtime_value = {
+"animation": null,
+"request_atack": null,
 "x": null,
 "y": null,
 "z": null

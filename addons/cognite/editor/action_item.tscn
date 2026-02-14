@@ -1,24 +1,122 @@
-[gd_scene load_steps=5 format=3 uid="uid://5ryiecwquvgd"]
+[gd_scene format=3 uid="uid://5ryiecwquvgd"]
 
 [ext_resource type="Script" uid="uid://ri50s6oqcsao" path="res://addons/cognite/editor/scripts/itens/action_item.gd" id="1_btbdu"]
+[ext_resource type="Texture2D" uid="uid://v4ltv3yeg71a" path="res://addons/cognite/assets/close.svg" id="2_btbdu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eiykg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rg2xv"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.6431373, 0.5372549, 0.37254903, 0.44705883)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1y6e"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.70787597, 0.6005129, 0.4299695, 0.44705883)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02s21"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.6431373, 0.5372549, 0.37254903, 0.44705883)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymax1"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.70787597, 0.6005129, 0.4299695, 0.44705883)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qo2lf"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.6431373, 0.5372549, 0.37254903, 0.44705883)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3yy8p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiykg"]
 content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-bg_color = Color(0.133333, 0.141176, 0.152941, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.9882353, 0.49803922, 0.49803922, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+bg_color = Color(0.18431373, 0.07450981, 0.18039216, 0.6)
+border_color = Color(0.24313726, 0.6745098, 0.88235295, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_detail = 5
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3yy8p"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btbdu"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.23638737, 0.102995686, 0.23160654, 0.6)
+border_color = Color(0.24313726, 0.6745098, 0.88235295, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qug8o"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.18431373, 0.07450981, 0.18039216, 0.6)
+border_color = Color(0.14181498, 0.54234993, 0.7247363, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olyut"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.23638737, 0.102995686, 0.23160654, 0.6)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odn1i"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.18431373, 0.07450981, 0.18039216, 0.6)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yy8p"]
 content_margin_left = 4.0
@@ -31,83 +129,92 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="action_item" type="PanelContainer"]
+[node name="action_item" type="PanelContainer" unique_id=175495853]
 offset_right = 16.0
 offset_bottom = 16.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eiykg")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_eiykg")
 script = ExtResource("1_btbdu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="action_folder" type="FoldableContainer" parent="." unique_id=1086842278]
+layout_mode = 2
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_rg2xv")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxFlat_r1y6e")
+theme_override_styles/title_collapsed_panel = SubResource("StyleBoxFlat_02s21")
+theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBoxFlat_ymax1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qo2lf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qo2lf")
+title = "Action"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="action_folder" unique_id=1466472903]
 layout_mode = 2
 
-[node name="header" type="HBoxContainer" parent="VBoxContainer"]
+[node name="header" type="HBoxContainer" parent="action_folder/VBoxContainer" unique_id=1926896551]
 layout_mode = 2
 
-[node name="activated" type="CheckButton" parent="VBoxContainer/header"]
+[node name="activated" type="CheckButton" parent="action_folder/VBoxContainer/header" unique_id=2049085313]
 layout_mode = 2
 button_pressed = true
 
-[node name="Label" type="Label" parent="VBoxContainer/header"]
+[node name="Label" type="Label" parent="action_folder/VBoxContainer/header" unique_id=558326653]
 layout_mode = 2
 text = "activated"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/header"]
+[node name="VSeparator" type="VSeparator" parent="action_folder/VBoxContainer/header" unique_id=142807485]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3yy8p")
 
-[node name="delete" type="Button" parent="VBoxContainer/header"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-focus_mode = 0
-text = "x"
-icon_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="action_folder/VBoxContainer" unique_id=10234139]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="action_folder/VBoxContainer/HBoxContainer" unique_id=2082106733]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Binded Decision:"
 vertical_alignment = 1
 
-[node name="context_name" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="context_name" type="LineEdit" parent="action_folder/VBoxContainer/HBoxContainer" unique_id=1870303022]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Name:"
 editable = false
 
-[node name="show_perception_list" type="CheckButton" parent="VBoxContainer"]
-custom_minimum_size = Vector2(24, 24)
+[node name="deed_folder" type="FoldableContainer" parent="action_folder/VBoxContainer" unique_id=564466445]
 layout_mode = 2
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_3yy8p")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3yy8p")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3yy8p")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3yy8p")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_3yy8p")
-theme_override_styles/focus = SubResource("StyleBoxFlat_3yy8p")
-button_pressed = true
-text = "Show Actions"
-icon_alignment = 1
-expand_icon = true
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_eiykg")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxFlat_btbdu")
+theme_override_styles/title_collapsed_panel = SubResource("StyleBoxFlat_qug8o")
+theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBoxFlat_olyut")
+theme_override_styles/focus = SubResource("StyleBoxFlat_odn1i")
+theme_override_styles/panel = SubResource("StyleBoxFlat_odn1i")
+title = "Actions"
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="action_folder/VBoxContainer/deed_folder" unique_id=1247477005]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3yy8p")
 
-[node name="deed_list" type="VBoxContainer" parent="VBoxContainer/PanelContainer"]
+[node name="deed_list" type="VBoxContainer" parent="action_folder/VBoxContainer/deed_folder/PanelContainer" unique_id=562757014]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="create_deed" type="Button" parent="VBoxContainer/PanelContainer/deed_list"]
+[node name="create_deed" type="Button" parent="action_folder/VBoxContainer/deed_folder/PanelContainer/deed_list" unique_id=2106540673]
 layout_mode = 2
 focus_mode = 0
 text = "Add Action"
 
-[connection signal="toggled" from="VBoxContainer/header/activated" to="." method="_on_activated_toggled"]
-[connection signal="pressed" from="VBoxContainer/header/delete" to="." method="_on_delete_pressed"]
-[connection signal="toggled" from="VBoxContainer/show_perception_list" to="." method="_on_show_perception_list_toggled"]
-[connection signal="pressed" from="VBoxContainer/PanelContainer/deed_list/create_deed" to="." method="_on_create_deed_pressed"]
+[node name="delete" type="Button" parent="." unique_id=4614271]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.57254905)
+icon = ExtResource("2_btbdu")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="toggled" from="action_folder/VBoxContainer/header/activated" to="." method="_on_activated_toggled"]
+[connection signal="pressed" from="action_folder/VBoxContainer/deed_folder/PanelContainer/deed_list/create_deed" to="." method="_on_create_deed_pressed"]
+[connection signal="pressed" from="delete" to="." method="_on_delete_pressed"]

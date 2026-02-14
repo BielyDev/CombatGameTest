@@ -10,11 +10,12 @@ var assemble: CogniteAssemble
 var decision_map: Dictionary = {}
 var context_list: Array[Control]
 
-@onready var decision_name: LineEdit = $VBoxContainer/HBoxContainer/decision_name
-@onready var score_value: LineEdit = $VBoxContainer/HBoxContainer3/score_value
-@onready var create_context_item: MenuButton = $VBoxContainer/PanelContainer/VBoxContainer/create_context_item
-@onready var context_itens: VBoxContainer = $VBoxContainer/PanelContainer/VBoxContainer
-@onready var decision_buttons: PanelContainer = $VBoxContainer/PanelContainer
+@onready var decision_name: LineEdit = $decision_folder/VBoxContainer/HBoxContainer/decision_name
+@onready var score_value: LineEdit = $decision_folder/VBoxContainer/HBoxContainer3/score_value
+@onready var create_context_item: MenuButton = $decision_folder/VBoxContainer/context_folder/PanelContainer/VBoxContainer/create_context_item
+@onready var context_itens: VBoxContainer = $decision_folder/VBoxContainer/context_folder/PanelContainer/VBoxContainer
+@onready var decision_buttons: PanelContainer = $decision_folder/VBoxContainer/context_folder/PanelContainer
+@onready var decision_folder: FoldableContainer = $decision_folder
 
 
 func _ready() -> void:
@@ -24,6 +25,7 @@ func _ready() -> void:
 func load_context(current_assemble: CogniteAssemble, decision_id: int, decision: Dictionary):
 	assemble = current_assemble; id = decision_id; decision_data = decision
 	decision_name.text = decision.name
+	decision_folder.title = str(decision.name.capitalize()," : ",id)
 	score_value.text = str(decision.base_score)
 	
 	for ctx in decision.context_ids:
@@ -66,6 +68,7 @@ func _on_decision_name_text_changed(new_text: String) -> void:
 	decision_name.caret_column = caret_position
 	
 	decision_data.name = word
+	decision_folder.title = str(word.capitalize()," : ",id)
 	assemble.atualize_decision(id, decision_data)
 
 

@@ -6,8 +6,8 @@ const ACTION_ITEM = preload("uid://5ryiecwquvgd")
 var assemble: CogniteAssemble
 var action_list: Array[Control]
 
-@onready var create_new_action: MenuButton = $VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/PanelContainer/create_new_action
-@onready var action_list_panel: VBoxContainer = $VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer
+@onready var create_new_action: MenuButton = $VBoxContainer/PanelContainer/VBoxContainer/PanelContainer/create_new_action
+@onready var action_list_panel: VBoxContainer = $VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/action_list
 
 
 func _ready() -> void:

@@ -8,9 +8,10 @@ var action_id: int
 var action_data: Dictionary
 var deed_list: Array[Control]
 
-@onready var context_name: LineEdit = $VBoxContainer/HBoxContainer/context_name
-@onready var deed_panel: PanelContainer = $VBoxContainer/PanelContainer
-@onready var deed_list_panel: VBoxContainer = $VBoxContainer/PanelContainer/deed_list
+@onready var context_name: LineEdit = $action_folder/VBoxContainer/HBoxContainer/context_name
+@onready var deed_panel: PanelContainer = $action_folder/VBoxContainer/deed_folder/PanelContainer
+@onready var deed_list_panel: VBoxContainer = $action_folder/VBoxContainer/deed_folder/PanelContainer/deed_list
+@onready var action_folder: FoldableContainer = $action_folder
 
 
 func load_action(_assemble: CogniteAssemble, _action_id: int, _action_data: Dictionary):
@@ -19,6 +20,7 @@ func load_action(_assemble: CogniteAssemble, _action_id: int, _action_data: Dict
 	var desicion := assemble.get_decision(action_data.decision_id)
 	if not desicion.is_empty():
 		context_name.text = desicion.name
+		action_folder.title = desicion.name.capitalize()
 	
 	for item in deed_list:
 		item.queue_free()
@@ -46,10 +48,6 @@ func _on_delete_pressed() -> void:
 	assemble.actions.erase(action_id)
 	assemble.actualize.call_deferred()
 	queue_free()
-
-
-func _on_show_perception_list_toggled(toggled_on: bool) -> void:
-	deed_panel.set_visible(toggled_on)
 
 
 func _on_create_deed_pressed() -> void:

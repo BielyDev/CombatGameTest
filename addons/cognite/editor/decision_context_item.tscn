@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfvabl2hgn276"]
+[gd_scene format=3 uid="uid://dfvabl2hgn276"]
 
 [ext_resource type="Script" uid="uid://crdcevoegt76r" path="res://addons/cognite/editor/scripts/itens/decision_context_item.gd" id="1_xckht"]
+[ext_resource type="Texture2D" uid="uid://v4ltv3yeg71a" path="res://addons/cognite/assets/close.svg" id="2_sctly"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxm0b"]
 content_margin_left = 8.0
@@ -11,15 +12,15 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="decision_context_item" type="PanelContainer"]
+[node name="decision_context_item" type="PanelContainer" unique_id=1130040702]
 offset_right = 226.0
 offset_bottom = 31.0
 script = ExtResource("1_xckht")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=833402078]
 layout_mode = 2
 
-[node name="context_name" type="Label" parent="HBoxContainer"]
+[node name="context_name" type="Label" parent="HBoxContainer" unique_id=2109820778]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -27,16 +28,23 @@ size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_bxm0b")
 vertical_alignment = 1
 
-[node name="score_value" type="LineEdit" parent="HBoxContainer"]
+[node name="score_value" type="SpinBox" parent="HBoxContainer" unique_id=850771607]
 layout_mode = 2
-placeholder_text = "score:"
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 50.0
 
-[node name="delete" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(30, 20)
+[node name="delete" type="Button" parent="HBoxContainer" unique_id=912491424]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 focus_mode = 0
-text = "x"
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.57254905)
+icon = ExtResource("2_sctly")
+flat = true
 icon_alignment = 1
+expand_icon = true
 
-[connection signal="text_changed" from="HBoxContainer/score_value" to="." method="_on_score_value_text_changed"]
+[connection signal="value_changed" from="HBoxContainer/score_value" to="." method="_on_score_value_value_changed"]
 [connection signal="pressed" from="HBoxContainer/delete" to="." method="_on_delete_pressed"]

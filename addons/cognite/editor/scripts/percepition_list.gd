@@ -4,7 +4,7 @@ extends GraphNode
 const PERCEPTION_ITEM = preload("res://addons/cognite/editor/perception_item.tscn")
 
 
-@onready var perceptions: VBoxContainer = $VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer
+@onready var perceptions: VBoxContainer = $VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/perceptions_list
 
 var assemble: CogniteAssemble
 var perceptions_list: Dictionary

@@ -10,11 +10,12 @@ var context_data: Dictionary
 var context_percetion_list: Array[Control]
 
 @onready var context_name: LineEdit = $context_folder/VBoxContainer/HBoxContainer/context_name
-@onready var create_perception_item: MenuButton = $context_folder/VBoxContainer/PanelContainer/perception_list/PanelContainer/create_perception_item
+@onready var create_perception_item: MenuButton = $context_folder/VBoxContainer/PanelContainer/perception_list/create_perception_item
 @onready var perception_list: VBoxContainer = $context_folder/VBoxContainer/PanelContainer/perception_list
 @onready var panel_perception_list: PanelContainer = $context_folder/VBoxContainer/PanelContainer
 @onready var context_activated: CheckButton = $context_folder/VBoxContainer/header/activated
 @onready var context_folder: FoldableContainer = $context_folder
+@onready var validate_value: OptionButton = $context_folder/VBoxContainer/validate_hbox/validate_value
 
 
 func _ready() -> void:
@@ -24,8 +25,9 @@ func _ready() -> void:
 func load_context(_assemble: CogniteAssemble, _context_id: int, _context_data: Dictionary):
 	assemble = _assemble; context_id = _context_id; context_data = _context_data
 	
-	context_folder.title = context_data.name.capitalize()
+	context_folder.title = str(context_data.name.capitalize()," : ",context_id)
 	context_name.text = context_data.name
+	validate_value.select(context_data.validate_mode)
 	context_activated.set_pressed_no_signal(context_data.activated)
 	
 	refresh_itens()
@@ -39,10 +41,11 @@ func refresh_itens():
 	
 	var erase_ids: Array
 	for p in context_data.perception_ids:
-		var item: Array = assemble.get_perception(p)
-		if item.is_empty(): erase_ids.append(p)
-		else: create_context_perception_item(p, context_data.perception_ids[p])
-	
+		for u in context_data.perception_ids[p]:
+			var item: Array = assemble.get_perception(p)
+			if item.is_empty(): erase_ids.append(p)
+			else: create_context_perception_item(p, u, context_data.perception_ids[p])
+		
 	for p in erase_ids:
 		context_data.perception_ids.erase(p)
 	
@@ -50,12 +53,20 @@ func refresh_itens():
 	perception_count = context_data.perception_ids.size()
 
 
-func create_context_perception_item(perception_id: int, perception: Dictionary):
+func create_context_perception_item(perception_id: int, unique_id: int, perception: Dictionary):
 	var per = PERCEPTION_CONTEXT_ITEM.instantiate()
 	perception_list.add_child(per)
 	context_percetion_list.append(per)
-	per.load_perception(perception_id, perception, context_id, assemble)
+	per.load_perception(perception_id, unique_id, perception, context_id, assemble)
 
+func get_unique_id(id: int) -> int:
+	var now_id: int = 0
+	
+	for child in perception_list.get_children():
+		if child.get("id") != null and child.id == id:
+			now_id += 1
+	
+	return now_id
 
 func _on_context_name_text_changed(new_text: String) -> void:
 	var caret_position = context_name.caret_column
@@ -63,7 +74,7 @@ func _on_context_name_text_changed(new_text: String) -> void:
 	context_name.set_text(word)
 	context_name.caret_column = caret_position
 	
-	context_folder.title = word.capitalize()
+	context_folder.title = str(word.capitalize()," : ",context_id)
 	
 	context_data.name = word
 	assemble.atualize_context(context_id, context_data)
@@ -81,8 +92,12 @@ func _on_delete_pressed() -> void:
 
 
 func _on_create_perception_item_pressed(id: int) -> void:
-	context_data.perception_ids[id] = assemble.PERCEPTION_CONTEXT_TEMPLATE.duplicate(true)
-	create_context_perception_item(id, context_data.perception_ids[id])
+	var unique_id: int = get_unique_id(id)
+	var dic: Dictionary = context_data.perception_ids.get_or_add(id,{})
+	dic[unique_id] = assemble.PERCEPTION_CONTEXT_TEMPLATE.duplicate(true)
+	context_data.perception_ids[id] = dic
+	
+	create_context_perception_item(id, unique_id, context_data.perception_ids[id][unique_id])
 	assemble.atualize_context(context_id, context_data)
 	perception_count = context_data.perception_ids.size()
 
@@ -104,3 +119,9 @@ func reset_perception_item_menu():
 	for perception_id in assemble.perceptions:
 		var perception: Array = assemble.perceptions[perception_id]
 		create_perception_item.get_popup().add_item(perception[0], perception_id)
+
+
+func _on_validate_value_item_selected(index: int) -> void:
+	context_data["validate_mode"] = index
+	print(context_data)
+	assemble.atualize_context(context_id, context_data)

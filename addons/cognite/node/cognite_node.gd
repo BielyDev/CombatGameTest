@@ -44,6 +44,7 @@ static func print_error(error_value: ErrorCognite) -> void:
 
 func deed_action_finalized(deed_name: StringName):
 	var action_id: int = action_by_decision[best_score_decision]
+	
 	runtime_action[action_id].finalized_current_deed(deed_name)
 
 
@@ -65,7 +66,7 @@ func _enter_tree() -> void:
 	
 	for action_id in cognite_assemble.actions:
 		var action: Dictionary = cognite_assemble.actions[action_id]
-		print("Action: ",action)
+		
 		runtime_action[action_id] = CogniteRuntimeAction.new(action, self)
 		action_by_decision[action.decision_id] = action_id
 

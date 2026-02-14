@@ -7,7 +7,7 @@ const CONTEXT_ITEM = preload("res://addons/cognite/editor/context_item.tscn")
 var current_assemble: CogniteAssemble
 var context_list: Array[Control]
 
-@onready var node_list: VBoxContainer = $VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer
+@onready var node_list: VBoxContainer = $VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/node_list
 
 
 func _on_create_perception_item_pressed() -> void:

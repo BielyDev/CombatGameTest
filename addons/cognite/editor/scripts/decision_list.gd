@@ -6,7 +6,7 @@ const DECISION_ITEM = preload("res://addons/cognite/editor/decision_item.tscn")
 var current_assemble: CogniteAssemble
 var decision_list: Array[Control]
 
-@onready var context_list: VBoxContainer = $VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer
+@onready var context_list: VBoxContainer = $VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer/context_list
 
 
 func set_assemble(assemble: CogniteAssemble):

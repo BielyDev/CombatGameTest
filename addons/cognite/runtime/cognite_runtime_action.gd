@@ -35,7 +35,6 @@ func start():
 	
 	for deed_id in deeds:
 		var deed: CogniteRuntimeDeed = deeds[deed_id]
-		
 		if not deed.started.is_connected(cognite_node._on_deed_started):
 			deed.started.connect(cognite_node._on_deed_started)
 			
@@ -49,8 +48,6 @@ func start():
 
 
 func start_cicle():
-	Cognite.main_panel
-	
 	queue_process_deeds.clear()
 	
 	if current_process < queue_process_size:
@@ -88,7 +85,6 @@ func finish():
 	
 	for deed in deeds:
 		deed = deeds[deed] as CogniteRuntimeDeed
-		
 		if deed.started.is_connected(cognite_node._on_deed_started):
 			deed.started.disconnect(cognite_node._on_deed_started)
 			

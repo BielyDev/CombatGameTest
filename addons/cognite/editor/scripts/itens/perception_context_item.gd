@@ -2,6 +2,7 @@
 extends PanelContainer
 
 var id: int
+var unique_id: int
 var context_id: int
 var context: Dictionary
 var perception_data: Dictionary
@@ -10,20 +11,20 @@ var assemble: CogniteAssemble
 @onready var percepetion_folder: FoldableContainer = $percepetion_folder
 @onready var proper: HBoxContainer = $percepetion_folder/VBoxContainer/proper
 @onready var boolean: CheckButton = $percepetion_folder/VBoxContainer/proper/boolean
-#@onready var min: LineEdit = $VBoxContainer/proper/min
 @onready var min: SpinBox = $percepetion_folder/VBoxContainer/proper/min
-#@onready var max: LineEdit = $VBoxContainer/proper/max
 @onready var max: SpinBox = $percepetion_folder/VBoxContainer/proper/max
 @onready var text: LineEdit = $percepetion_folder/VBoxContainer/proper/text
 @onready var perception_type: Label = $percepetion_folder/VBoxContainer/proper/property_name
 
 
-func load_perception(perception_id: int, _perception_data: Dictionary, _context_id: int, _assemble: CogniteAssemble):
-	id = perception_id; perception_data = _perception_data; context_id = _context_id; assemble = _assemble
+func load_perception(perception_id: int, received_unique_id: int, _perception_data: Dictionary, _context_id: int, _assemble: CogniteAssemble):
+	id = perception_id; unique_id = received_unique_id; perception_data = _perception_data; context_id = _context_id; assemble = _assemble
+	
 	var perception: Array = assemble.get_perception(id)
+	
 	context = assemble.get_context(context_id)
-	percepetion_folder.title = str(perception[0]).capitalize()
-	perception_data = context.perception_ids[id]
+	percepetion_folder.title = str(str(perception[0]).capitalize()," [",id," - ",unique_id,"]")
+	perception_data = context.perception_ids[id][unique_id]
 	
 	match perception[1]:
 		0:

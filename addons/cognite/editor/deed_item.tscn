@@ -1,16 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://d56kl0ah7k1r"]
+[gd_scene format=3 uid="uid://d56kl0ah7k1r"]
 
 [ext_resource type="Script" uid="uid://b7l48hlrgw1aj" path="res://addons/cognite/editor/scripts/itens/deed_item.gd" id="1_d7xlx"]
 
-[node name="deed_item" type="HBoxContainer"]
+[node name="deed_item" type="HBoxContainer" unique_id=1718657133]
 offset_right = 252.0
 offset_bottom = 31.0
 script = ExtResource("1_d7xlx")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=506925142]
 layout_mode = 2
 
-[node name="up" type="Button" parent="VBoxContainer"]
+[node name="up" type="Button" parent="VBoxContainer" unique_id=675494943]
 custom_minimum_size = Vector2(34, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -19,7 +19,7 @@ theme_override_font_sizes/font_size = 13
 text = "▲"
 icon_alignment = 1
 
-[node name="down" type="Button" parent="VBoxContainer"]
+[node name="down" type="Button" parent="VBoxContainer" unique_id=1632000399]
 custom_minimum_size = Vector2(34, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -28,12 +28,12 @@ theme_override_font_sizes/font_size = 13
 text = "▼"
 icon_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1368791305]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Action:"
 
-[node name="process_mode_button" type="MenuButton" parent="."]
+[node name="process_mode_button" type="MenuButton" parent="." unique_id=1169434274]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cascade"
@@ -47,7 +47,7 @@ popup/item_1/id = 1
 popup/item_2/text = "Parallel"
 popup/item_2/id = 2
 
-[node name="delete" type="Button" parent="."]
+[node name="delete" type="Button" parent="." unique_id=1177499791]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 focus_mode = 0

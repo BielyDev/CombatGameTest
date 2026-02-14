@@ -4,95 +4,184 @@
 
 [resource]
 script = ExtResource("1_yusib")
-creation_count = 76
+creation_count = 116
 perceptions = {
-0: ["life", 1],
 19: ["distance", 1],
 49: ["animation", 2],
-75: ["teste", 0]
+96: ["life", 1],
+99: ["atack", 1],
+106: ["await_atack", 0],
+110: ["is_defense", 0]
 }
 contexts = {
 21: {
 "activated": true,
 "name": "player_zone_atack",
 "perception_ids": {
-75: {
+19: {
+0: {
 "bool": false,
-"max": 1,
+"max": 2.60000000000582,
 "min": 0,
 "text": ""
 }
 }
+},
+"validate_mode": 0
 },
 30: {
 "activated": true,
 "name": "player_zone_view",
 "perception_ids": {
 19: {
+0: {
 "bool": false,
-"max": 1.0,
-"min": 0.0,
+"max": 9.0,
+"min": 2.39999999999418,
 "text": ""
 }
 }
 },
-50: {
+"validate_mode": 0
+},
+87: {
 "activated": true,
-"name": "in_atack",
+"name": "In_atack",
 "perception_ids": {
 49: {
+0: {
 "bool": false,
 "max": 1,
 "min": 0,
-"text": "Atack"
+"text": "Atack_one"
+},
+1: {
+"bool": false,
+"max": 1,
+"min": 0,
+"text": "Atack_two"
 }
 }
+},
+"validate_mode": 0
+},
+105: {
+"activated": true,
+"name": "Await_decision",
+"perception_ids": {
+106: {
+0: {
+"bool": true,
+"max": 1,
+"min": 0,
+"text": ""
+}
+}
+},
+"validate_mode": 1
+},
+112: {
+"activated": true,
+"name": "Await_defense",
+"perception_ids": {
+106: {
+0: {
+"bool": true,
+"max": 1,
+"min": 0,
+"text": ""
+}
+},
+110: {
+0: {
+"bool": true,
+"max": 1,
+"min": 0,
+"text": ""
+}
+}
+},
+"validate_mode": 1
 }
 }
 decisions = {
-4: {
-"activated": true,
-"base_score": 0,
-"context_ids": {
-21: 1
-},
-"name": "battle"
-},
 23: {
 "activated": true,
 "base_score": 0,
 "context_ids": {
-21: 0,
+21: -1,
 30: 1,
-50: 0
+87: -3,
+112: -1
 },
 "name": "chase"
 },
 27: {
 "activated": true,
-"base_score": 0,
+"base_score": 1,
 "context_ids": {
-30: 0,
-50: 0
+21: -1,
+30: -1,
+87: -1,
+105: 2,
+112: -2
 },
 "name": "idle"
+},
+88: {
+"activated": true,
+"base_score": 0,
+"context_ids": {
+21: 2,
+105: -1
+},
+"name": "atack"
+},
+107: {
+"activated": true,
+"base_score": 0,
+"context_ids": {
+21: 1,
+87: -2,
+112: 1
+},
+"name": "Defense"
+},
+113: {
+"activated": true,
+"base_score": 0,
+"context_ids": {
+105: 5,
+112: -5
+},
+"name": "Await_combat"
 }
 }
 actions = {
 41: {
 "activated": true,
 "decision_id": 27,
-"deed_list": [41]
+"deed_list": [41, 76]
 },
 42: {
 "activated": true,
 "decision_id": 23,
 "deed_list": [42, 53]
 },
-51: {
+90: {
 "activated": true,
-"decision_id": 4,
-"deed_list": [54]
+"decision_id": 88,
+"deed_list": [90, 92, 95]
+},
+108: {
+"activated": true,
+"decision_id": 107,
+"deed_list": [109]
+},
+114: {
+"activated": true,
+"decision_id": 113,
+"deed_list": [115]
 }
 }
 deeds = {
@@ -104,14 +193,50 @@ deeds = {
 "name": "walk",
 "process_mode": 1
 },
-54: {
-"name": "atack",
+76: {
+"name": "idle",
+"process_mode": 1
+},
+79: {
+"name": "atack_one",
+"process_mode": 1
+},
+83: {
+"name": "",
+"process_mode": 1
+},
+84: {
+"name": "atack_two",
+"process_mode": 1
+},
+92: {
+"name": "atack_one",
+"process_mode": 1
+},
+93: {
+"name": "atack_two",
+"process_mode": 1
+},
+95: {
+"name": "atack_two",
+"process_mode": 1
+},
+109: {
+"name": "defense",
+"process_mode": 1
+},
+115: {
+"name": "await_combat",
 "process_mode": 1
 }
 }
 perception_runtime_value = {
 "animation": "",
+"atack": null,
+"await_atack": null,
 "distance": 0.0,
-"life": null
+"is_defense": null,
+"life": null,
+"teste": null
 }
 metadata/_custom_type_script = "uid://bmho1qa7r0yhk"
