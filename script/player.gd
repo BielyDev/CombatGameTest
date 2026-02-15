@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const GRAVITY_MAX: float = 30.0
-const GRAVITY_FORCE: float = 0.1
+const GRAVITY_FORCE: float = 0.3
 
 var motion: Vector3
 var motion_rotated: Vector3

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dovn0xb8n3xev" path="res://scenes/npc/player.tscn" id="1_lnto1"]
 [ext_resource type="PackedScene" uid="uid://bux64un21k338" path="res://scenes/npc/enemy.tscn" id="2_gl1gs"]
-[ext_resource type="PackedScene" uid="uid://y73l82q3lq0x" path="res://scenes/world/teste.tscn" id="3_gl1gs"]
+[ext_resource type="PackedScene" path="res://scenes/world/teste.tscn" id="3_gl1gs"]
 
 [sub_resource type="Curve3D" id="Curve3D_lnto1"]
 closed = true
@@ -25,7 +25,7 @@ sky = SubResource("Sky_a202f")
 [node name="Teste" type="Node3D" unique_id=519068162]
 
 [node name="Player" parent="." unique_id=293590328 instance=ExtResource("1_lnto1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3959274, -6.8836207)
 collision_layer = 129
 
 [node name="Enemy" parent="." unique_id=881178478 node_paths=PackedStringArray("path") instance=ExtResource("2_gl1gs")]
@@ -51,5 +51,4 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="W" unique_id=632312367]
 environment = SubResource("Environment_noarx")
 
-[node name="teste" parent="." unique_id=278672872 instance=ExtResource("3_gl1gs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.03411174, -1)
+[node name="_Node3D_23104" parent="." unique_id=2140150554 instance=ExtResource("3_gl1gs")]
